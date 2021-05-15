@@ -10,14 +10,20 @@ const App = () =>{
     //const accessToken = "Bearer 6b478c21d23e90b19dbcaf8523c28659d422716b"
 
     //for testing
-    /*const obj = [
+    const obj = [
+      {
+        link: "https://i.imgur.com/9axHI5G.png"
+      },
+      {
+        link: "https://i.imgur.com/9axHI5G.png"
+      },
       {
         link: "https://i.imgur.com/9axHI5G.png"
       },
       {
         link: "https://i.imgur.com/9axHI5G.png"
       }
-    ]*/
+    ]
 
     const getPages = () =>{
       if(query !== ""){
@@ -42,16 +48,16 @@ const App = () =>{
 
     const handleSubmit = e =>{
       e.preventDefault();
-      getPages();
+      //getPages();
       if(pages != null){
         setToggle(true);
       }
       //for testing
-      //setPages(obj);
+      setPages(obj);
     }
 
     return(
-        <div>
+        <div className="App">
             <form onSubmit={handleSubmit}>
                 <input 
                   type="text"

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #3a3b3c;
 }
 
 form{
@@ -10,8 +11,8 @@ form{
 .search{
   width: 400px;
   height: 10px;
-  margin-bottom: 50px;
-  margin-top: 3.5px;
+  margin-bottom: 25px;
+  margin-top: 4px;
   padding: 15px;
   appearance: none;
   background: none;
