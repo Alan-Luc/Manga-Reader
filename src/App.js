@@ -30,7 +30,6 @@ const App = () =>{
 
     const handleSubmit = e =>{
       e.preventDefault();
-      setToggle(true);
       fetch(`https://api.imgur.com/3/album/${query}`, {
             method: "GET",
             headers: {
@@ -43,6 +42,7 @@ const App = () =>{
             setPages(data.data.images);
             console.log(pages)
       });
+      setToggle(true);
     }
 
     return(
