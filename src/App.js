@@ -9,6 +9,16 @@ const App = () =>{
 
     //const accessToken = "Bearer 6b478c21d23e90b19dbcaf8523c28659d422716b"
 
+    //for testing
+    /*const obj = [
+      {
+        link: "https://i.imgur.com/9axHI5G.png"
+      },
+      {
+        link: "https://i.imgur.com/9axHI5G.png"
+      }
+    ]*/
+
     const getPages = () =>{
       if(query !== ""){
         fetch(`https://api.imgur.com/3/album/${query}`, {
@@ -36,11 +46,12 @@ const App = () =>{
       if(pages != null){
         setToggle(true);
       }
+      //for testing
+      //setPages(obj);
     }
 
     return(
         <div>
-            {/*<button onClick={handleClick}>click</button>*/}
             <form onSubmit={handleSubmit}>
                 <input 
                   type="text"

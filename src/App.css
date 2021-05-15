@@ -10,7 +10,7 @@ form{
 .search{
   width: 400px;
   height: 10px;
-  margin-bottom: -50px;
+  margin-bottom: 50px;
   margin-top: 3.5px;
   padding: 15px;
   appearance: none;
@@ -27,5 +27,5 @@ form{
 .pages{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
