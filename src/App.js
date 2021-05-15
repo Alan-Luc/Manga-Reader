@@ -46,8 +46,16 @@ const App = () =>{
       setQuery(e.target.value);
     }
 
+    const getId = () => {
+      if(query >= 18){
+        const id = query.slice(18, query.length).split("/");
+        setQuery(id[1]);
+      }
+    }
+
     const handleSubmit = e =>{
       e.preventDefault();
+      getId();
       getPages();
       if(pages != null){
         setToggle(true);
