@@ -26,5 +26,5 @@ form{
 
 .pages{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
