@@ -23,7 +23,11 @@ const App = () =>{
     }
 
     const displayPages = () =>{
-        {pages !== null ? pages.map(image => <img src={image.link} alt="manga page"/>) : console.log("no pages")};
+      return(
+        <div>
+          {pages !== null ? pages.map(image => <img src={image.link} alt="manga page"/>) : console.log("no pages")};
+        </div>
+      )
     }
 
     return(
