@@ -36,7 +36,6 @@ const App = () =>{
       if(pages != null){
         setToggle(true);
       }
-      
     }
 
     return(
