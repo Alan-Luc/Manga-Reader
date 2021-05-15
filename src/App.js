@@ -1,25 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () =>{
+
+    const [pages, setPages] = useState();
+
+    //const accessToken = "Bearer 6b478c21d23e90b19dbcaf8523c28659d422716b"
+
+    const handleClick = () =>{
+        fetch("https://api.imgur.com/3/album/zYLDaPN", {
+            method: "GET",
+            headers: {
+                Authorization:"Client-ID 7ce042b065faaa3"
+            }
+        })
+        .then(data => data.json())
+        .then(data => {
+            console.log(data);
+            setPages(data.data.images);
+            console.log(pages)
+        });
+    }
+
+    const displayPages = () =>{
+        {pages !== null ? pages.map(image => <img src={image.link} alt="manga page"/>) : console.log("no pages")};
+    }
+
+    return(
+        <div>
+            <button onClick={handleClick}>click</button>
+            <button onClick={displayPages}>get pages</button>
+        </div>
+    )
 }
 
 export default App;
