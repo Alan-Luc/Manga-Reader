@@ -63,7 +63,7 @@ const App = () =>{
                 />
             </form>
             <div className="pages">
-              {toggle ? pages.map(item => <img src={item.link} alt="manga page" key={uuidv4()} width="200"/>) : null}
+              {toggle ? pages.map(item => <img src={item.link} alt="manga page" key={uuidv4()} width="800"/>) : null}
             </div>
             
         </div>
