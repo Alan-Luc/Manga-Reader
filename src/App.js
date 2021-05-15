@@ -39,7 +39,7 @@ const App = () =>{
     }
 
     return(
-        <div className="pages">
+        <div>
             {/*<button onClick={handleClick}>click</button>*/}
             <form onSubmit={handleSubmit}>
                 <input 
@@ -51,7 +51,7 @@ const App = () =>{
                   value={query}
                 />
             </form>
-            <div>
+            <div className="pages">
               {toggle ? pages.map(item => <img src={item.link} alt="manga page" key={uuidv4()} width="200"/>) : null}
             </div>
             
