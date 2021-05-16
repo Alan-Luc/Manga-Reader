@@ -4,8 +4,9 @@ import { v4 as uuidv4 } from "uuid";
 
 const App = () =>{
     const [pages, setPages] = useState();
-    const [toggle, setToggle] = useState(false)
-    const [query, setQuery] = useState()
+    const [toggle, setToggle] = useState(false);
+    const [query, setQuery] = useState();
+    const [currentId, setCurrentId] = useState();
 
     //const accessToken = "Bearer 6b478c21d23e90b19dbcaf8523c28659d422716b"
 
@@ -26,9 +27,9 @@ const App = () =>{
     ]*/
 
     const getPages = () =>{ 
-      getId();
       if(query !== ""){
-        fetch(`https://api.imgur.com/3/album/${query}`, {
+        getId();
+        fetch(`https://api.imgur.com/3/album/${currentId}`, {
               method: "GET",
               headers: {
                   Authorization:"Client-ID 7ce042b065faaa3"
@@ -48,9 +49,9 @@ const App = () =>{
     }
 
     const getId = () => {
-      if(query >= 18){
+      if(query.length >= 18){
         const id = query.slice(18, query.length).split("/");
-        setQuery(id[1]);
+        setCurrentId(id[1]);
       }
     }
 
