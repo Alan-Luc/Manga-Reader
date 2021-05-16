@@ -25,7 +25,8 @@ const App = () =>{
       }
     ]*/
 
-    const getPages = () =>{
+    const getPages = () =>{ 
+      getId();
       if(query !== ""){
         fetch(`https://api.imgur.com/3/album/${query}`, {
               method: "GET",
@@ -55,7 +56,6 @@ const App = () =>{
 
     const handleSubmit = e =>{
       e.preventDefault();
-      getId();
       getPages();
       if(pages != null){
         setToggle(true);
