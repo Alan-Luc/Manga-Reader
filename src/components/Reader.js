@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Link } from 'react-router-dom';
-import queryString from 'query-string';
+//import { Link } from 'react-router-dom';
+//import queryString from 'query-string';
 
 const Reader = ({ location }) =>{
     const [pages, setPages] = useState();
     const [toggle, setToggle] = useState(false);
     const [query, setQuery] = useState();
-    const [currentId, setCurrentId] = useState();
+    //const [currentId, setCurrentId] = useState();
 
     useEffect(() => {
       const hash = window.location.pathname.split("/")
-      //console.log(window.location.href)
       //console.log(hash[hash.length-1])
       setQuery(hash[hash.length-1])
       console.log(query);
-    }, []);
+      //console.log(window.location.href)
+      getPages();
+    }, [query]);
 
     //const accessToken = "Bearer 6b478c21d23e90b19dbcaf8523c28659d422716b"
 
     //for testing
-    const obj = [
+    /*const obj = [
       {
         link: "https://i.imgur.com/9axHI5G.png"
       },
@@ -39,14 +40,14 @@ const Reader = ({ location }) =>{
       {
         link: "https://i.imgur.com/9axHI5G.png"
       }
-    ]
+    ]*/
 
     /*useEffect(() => {
       getPages();
     }, [currentId]);*/
 
     const getPages = async () =>{ 
-      if(currentId !== ""){
+      if(query !== ""){
         const api_call =  await fetch(`https://api.imgur.com/3/album/${query}`, {
               method: "GET",
               headers: {

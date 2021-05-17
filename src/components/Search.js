@@ -28,7 +28,6 @@ const Search = () => {
                 <h1 className ="heading">Read Manga</h1>
                 <div>
                     <input 
-                        className="search"
                         type ='text'
                         placeholder = 'Enter an imgur link'
                         autoComplete = 'off'
