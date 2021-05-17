@@ -26,21 +26,24 @@ const App = () =>{
       }
     ]*/
 
-    const getPages = () =>{ 
+    const getPages = async () =>{ 
       if(query !== ""){
-        getId();
-        fetch(`https://api.imgur.com/3/album/${currentId}`, {
+        const api_call =  await fetch(`https://api.imgur.com/3/album/${currentId}`, {
               method: "GET",
               headers: {
                   Authorization:"Client-ID 7ce042b065faaa3"
               }
-          })
-          .then(data => data.json())
-          .then(data => {
-              console.log(data);
-              setPages(data.data.images);
-              console.log(pages)
         });
+        const data = await api_call.json();
+        setPages(data.data.images);
+        if(data.success){
+          setToggle(true);
+        }
+        else{
+          setToggle(false);
+        }
+        console.log(data);
+        console.log(pages);
       }
     }
 
@@ -57,10 +60,8 @@ const App = () =>{
 
     const handleSubmit = e =>{
       e.preventDefault();
+      getId();
       getPages();
-      if(pages != null){
-        setToggle(true);
-      }
       //for testing
       //setPages(obj);
     }
