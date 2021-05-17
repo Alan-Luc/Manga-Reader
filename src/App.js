@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const App = () =>{
@@ -26,8 +26,12 @@ const App = () =>{
       }
     ]*/
 
+    useEffect(() => {
+      getPages();
+    }, [currentId])
+
     const getPages = async () =>{ 
-      if(query !== ""){
+      if(currentId !== ""){
         const api_call =  await fetch(`https://api.imgur.com/3/album/${currentId}`, {
               method: "GET",
               headers: {
@@ -61,7 +65,6 @@ const App = () =>{
     const handleSubmit = e =>{
       e.preventDefault();
       getId();
-      getPages();
       //for testing
       //setPages(obj);
     }
