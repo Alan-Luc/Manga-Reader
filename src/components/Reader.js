@@ -16,7 +16,7 @@ const Reader = ({ location }) =>{
       console.log(query);
       //console.log(window.location.href)
       getPages();
-    }, );
+    }, [query]);
 
     //const accessToken = "Bearer 6b478c21d23e90b19dbcaf8523c28659d422716b"
 
