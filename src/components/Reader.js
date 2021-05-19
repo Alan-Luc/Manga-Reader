@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import SwipeableTemporaryDrawer from "./Sidebar";
+import SelectPage from "./SelectPage";
+import IconButton from '@material-ui/core/IconButton';
+import ZoomInIcon from '@material-ui/icons/ZoomIn';
+import ZoomOutIcon from '@material-ui/icons/ZoomOut';
+
 //import { Link } from 'react-router-dom';
 //import queryString from 'query-string';
 
@@ -8,6 +14,11 @@ const Reader = ({ location }) =>{
     const [toggle, setToggle] = useState(false);
     const [query, setQuery] = useState();
     //const [currentId, setCurrentId] = useState();
+    const hash = window.location.pathname.split("/");
+    const [vertical, setVertical] = useState(true);
+    const [count, setCount] = useState(0);
+    const [size, setSize] = useState(800);
+    const [openNav, setOpenNav] = useState(false);
 
     useEffect(() => {
       const hash = window.location.pathname.split("/")
@@ -26,13 +37,13 @@ const Reader = ({ location }) =>{
         link: "https://i.imgur.com/9axHI5G.png"
       },
       {
-        link: "https://i.imgur.com/9axHI5G.png"
+        link: "https://i.imgur.com/uMuzsmq.png"
       },
       {
-        link: "https://i.imgur.com/9axHI5G.png"
+        link: "https://i.imgur.com/pVyjzh0.png"
       },
       {
-        link: "https://i.imgur.com/9axHI5G.png"
+        link: "https://i.imgur.com/QwRn96r.png"
       },
       {
         link: "https://i.imgur.com/9axHI5G.png"
@@ -41,6 +52,9 @@ const Reader = ({ location }) =>{
         link: "https://i.imgur.com/9axHI5G.png"
       }
     ]*/
+
+    //const [toggle, setToggle] = useState(true); // for testing
+    //const [pages, setPages] = useState(obj); // for testing
 
     /*useEffect(() => {
       getPages();
@@ -67,6 +81,7 @@ const Reader = ({ location }) =>{
       }
     }
 
+    
     /*const handleChange = e =>{
       setQuery(e.target.value);
     }
@@ -86,8 +101,28 @@ const Reader = ({ location }) =>{
       setToggle(true);
     }*/
 
+    /*const bar = () => {
+      document.getElementsByClassName('Sidebar').style.width = '250px'
+      document.getElementsByClassName('pp').style.marginLeft = '250px'
+      setOpenNav(true)
+    }*/
+    
+    console.log(toggle);
+    console.log(vertical);
+    console.log(count);
+    console.log(size);
+
     return(
         <div className="App">
+
+          <div className = "pp">
+            <SwipeableTemporaryDrawer penis={setVertical} wiener={setSize}/>
+          </div>
+          <div className="williamLikesDick">
+            <IconButton onClick={() => {(size < 1200) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>
+            <IconButton onClick={() => {(size > 200) && setSize(prev => prev - 100)}}><ZoomOutIcon/></IconButton>
+          </div>
+
             {/*<form onSubmit={handleSubmit}>
                 <input 
                   type="text"
@@ -99,8 +134,16 @@ const Reader = ({ location }) =>{
                 />
             </form>*/}
             <div className="pages">
-              {toggle ? pages.map(item => <img className="mangaPage" src={item.link} alt="manga page" key={uuidv4()} width="800"/>) : null}
+              {(toggle && vertical) && pages.map(item => <img className="mangaPage" src={item.link} alt="manga page" key={uuidv4()} width={size}/>)}
             </div>
+            {(toggle && !vertical) &&
+            <div>
+              <img className="mangaPage" src={pages[count].link} alt="manga page" width={size}/>
+              <div>
+                <SelectPage pages={pages} counter={count} newCount={setCount} />
+              </div>
+            </div>
+            }
         </div>
     )
 }

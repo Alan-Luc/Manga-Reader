@@ -22,7 +22,6 @@ const Search = () => {
     }*/
           
     return (
-        
         <div className = "joinOuterContainer">
             <form className ="joinInnerContainer">
                 <h1 className ="heading">Read Manga</h1>

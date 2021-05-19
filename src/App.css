@@ -32,7 +32,25 @@ form{
 }
 
 .mangaPage{
-  width: 800px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.pp {
+  color: white;
+  text-align: left;
+  border-color: #eca1a6;
+  position: fixed;
+}
+
+.williamLikesDick {
+  margin-left: 97%;
+  color: white;
+  background-color: whitesmoke;
+  width: 50px;
+  position: fixed;
+}
+
+.williamLikesDick:focus {
+  color: white;
 }
