@@ -26,7 +26,7 @@ function SelectPage(props) {
 
   useEffect(()=>{
     setPage(props.counter + 1);
-  }, [props.counter])
+  }, [props.counter]);
 
   const handleChange = (event) => {
     setPage(event.target.value -1);
@@ -41,9 +41,20 @@ function SelectPage(props) {
     setOpen(true);
   };
 
+  const keyPress = (e) => {
+    e = e || window.event
+    
+    if(e.keyCode == '37') {
+      props.counter > 0 && props.newCount(prev => prev - 1);
+    }
+    else if(e.keyCode == '39') {
+      props.counter < (props.pages.length - 1) && props.newCount(prev => prev + 1);
+    }
+  }
+
   return (
     <div>
-        <div style={{margin: "theme.spacing(1)"}}>
+        <div onKeyDown={keyPress} style={{margin: "theme.spacing(1)"}}>
             <button onClick={() => {props.counter > 0 && props.newCount(prev => prev - 1)}}>{"<"}</button>
             <button onClick={() => {props.counter < (props.pages.length - 1) && props.newCount(prev => prev + 1)}}>{">"}</button>
         </div>

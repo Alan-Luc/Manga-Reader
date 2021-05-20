@@ -82,6 +82,8 @@ const Reader = ({ location }) =>{
     }
 
     
+
+    
     /*const handleChange = e =>{
       setQuery(e.target.value);
     }
@@ -107,20 +109,22 @@ const Reader = ({ location }) =>{
       setOpenNav(true)
     }*/
     
+    /* 
     console.log(toggle);
     console.log(vertical);
     console.log(count);
     console.log(size);
+    */
 
     return(
-        <div className="App">
+        <div className={vertical ? "vApp" : "hApp"}>
 
           <div className = "pp">
-            <SwipeableTemporaryDrawer penis={setVertical} wiener={setSize}/>
+            <SwipeableTemporaryDrawer penis={setVertical} wiener={setSize} pp={vertical}/>
           </div>
-          <div className="williamLikesDick">
+          <div className="zoom">
             <IconButton onClick={() => {(size < 1200) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>
-            <IconButton onClick={() => {(size > 200) && setSize(prev => prev - 100)}}><ZoomOutIcon/></IconButton>
+            <IconButton onClick={() => {(size > 600) && setSize(prev => prev - 100)}}><ZoomOutIcon/></IconButton>
           </div>
 
             {/*<form onSubmit={handleSubmit}>
@@ -134,11 +138,11 @@ const Reader = ({ location }) =>{
                 />
             </form>*/}
             <div className="pages">
-              {(toggle && vertical) && pages.map(item => <img className="mangaPage" src={item.link} alt="manga page" key={uuidv4()} width={size}/>)}
+              {(toggle && vertical) && pages.map(item => <img className="vMangaPage" src={item.link} alt="manga page" key={uuidv4()} width={size}/>)}
             </div>
             {(toggle && !vertical) &&
             <div>
-              <img className="mangaPage" src={pages[count].link} alt="manga page" width={size}/>
+              <img className="hMangaPage" src={pages[count].link} alt="manga page" width={size}/>
               <div>
                 <SelectPage pages={pages} counter={count} newCount={setCount} />
               </div>

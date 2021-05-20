@@ -1,4 +1,9 @@
-.App {
+.vApp {
+  text-align: center;
+  background-color: #3a3b3c;
+}
+
+.hApp {
   text-align: center;
   background-color: #3a3b3c;
 }
@@ -31,7 +36,12 @@ form{
   align-items: center;
 }
 
-.mangaPage{
+.vMangaPage{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.hMangaPage{
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -43,14 +53,39 @@ form{
   position: fixed;
 }
 
-.williamLikesDick {
-  margin-left: 97%;
+.zoom {
+  margin-left: 97vw;
   color: white;
   background-color: whitesmoke;
   width: 50px;
   position: fixed;
 }
-
-.williamLikesDick:focus {
+.zoom:focus {
   color: white;
 }
+
+@media all and (max-width: 425px){
+  .zoom {
+    visibility: hidden;
+  }
+  .zoom:focus {
+    color: white;
+  }
+}
+
+
+@media all and (max-width: 425px){
+  .hApp {
+    height: 100vh;
+  }
+
+  .vMangaPage{
+    width: 97vw;
+  }
+
+  .hMangaPage{
+    margin-top: 10vh;
+    width: 97vw;
+  }
+}
+
