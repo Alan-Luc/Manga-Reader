@@ -49,8 +49,8 @@ const SwipeableTemporaryDrawer = (props) => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem button onClick={() => props.penis(prev => !prev)}>
-          <MenuBookIcon style={{ marginRight: '10px'}}/>{!props.pp ? "Vertical mode" : "Horizontal mode"} 
+        <ListItem button onClick={() => props.setVert(prev => !prev)}>
+          <MenuBookIcon style={{ marginRight: '10px'}}/>{!props.vert ? "Vertical mode" : "Horizontal mode"} 
         </ListItem> 
       </List>
     </div>

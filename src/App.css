@@ -42,8 +42,15 @@ form{
 }
 
 .hMangaPage{
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   margin-top: 10px;
   margin-bottom: 10px;
+  text-align: center;
+  position: relative;
+  z-index: 0;
 }
 
 .pp {
@@ -54,14 +61,32 @@ form{
 }
 
 .zoom {
-  margin-left: 97vw;
+  margin-left: 96.5vw;
   color: white;
-  background-color: whitesmoke;
+  background-color: white;
   width: 50px;
   position: fixed;
 }
 .zoom:focus {
   color: white;
+}
+.box {
+  display: flex;
+  flex-direction: row;
+}
+.box1 {
+  width: 46.5vw;
+  height: 1100px;
+  z-index: 1;
+  left: 3.5vw;
+  position: absolute;
+}
+.box2 {
+  width: 46.5vw;
+  height: 1100px;
+  z-index: 2;
+  position: absolute;
+  left:50vw;
 }
 
 @media all and (max-width: 425px){

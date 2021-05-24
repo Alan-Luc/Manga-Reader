@@ -5,21 +5,6 @@ import './Search.css'
 
 const Search = () => {
     const [link, setLink] = useState();
-
-    /*const getId = () => {
-        if(link.length >= 18){
-          const id = link.slice(18, link.length).split("/");
-          setHash(id[1]);
-          console.log(hash);
-        }
-    }*/
-
-    /*const handleChange = (e) =>{
-        if(e.target.value >= 18){
-            setLink((e.target.value).slice(18, e.target.value.length).split('/'));
-            console.log()
-        }
-    }*/
           
     return (
         <div className = "joinOuterContainer">
