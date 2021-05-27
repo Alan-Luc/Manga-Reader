@@ -17,9 +17,10 @@ const Reader = () =>{
     const [openNav, setOpenNav] = useState(false);
 
     useEffect(() => {
-      const hash = window.location.pathname.split("/")
+      const hash = window.location.hash.split("/")
       setQuery(hash[hash.length-1])
       console.log(query);
+      console.log(hash);
       getPages();
     }, [query]);
 
