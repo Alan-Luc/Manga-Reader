@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
-import SwipeableTemporaryDrawer from "./Sidebar";
+import Sidebar from "./Sidebar";
 import SelectPage from "./SelectPage";
 import IconButton from '@material-ui/core/IconButton';
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
@@ -78,15 +78,15 @@ const Reader = () =>{
         <div className={vertical ? "vApp" : "hApp"}>
 
           <div className = "pp">
-            <SwipeableTemporaryDrawer setVert={setVertical} size={setSize} vert={vertical}/>
+            <Sidebar setVert={setVertical} size={setSize} vert={vertical}/>
           </div>
           <div className="zoom">
             <IconButton onClick={() => {(size < 1000) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>
             <IconButton onClick={() => {(size > 600) && setSize(prev => prev - 100)}}><ZoomOutIcon/></IconButton>
           </div>
           {!vertical &&
-          <div>
-            <SelectPage pages={pages} counter={count} newCount={setCount} vert={vertical} />
+          <div className="pageSelect">
+            <SelectPage pages={pages} counter={count} newCount={setCount} vert={vertical}/>
           </div>}
             <div className="pages">
               {(toggle && vertical) && pages.map(item => <img className="vMangaPage" src={item.link} alt="manga page" key={uuidv4()} width={size}/>)}

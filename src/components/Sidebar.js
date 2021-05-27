@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SwipeableTemporaryDrawer = (props) => {
+const Sidebar = (props) => {
   const classes = useStyles();
   const [left, setLeft] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -60,7 +60,7 @@ const SwipeableTemporaryDrawer = (props) => {
     <div>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button style={{color: 'white'}}onClick={toggleDrawer(anchor, true)}><ArrowForwardIosIcon/></Button>
+          <Button style={{color: 'white'}}onClick={toggleDrawer(anchor, true)}><ArrowForwardIosIcon style={{color: "#eca1a6"}}/></Button>
           <SwipeableDrawer
             anchor={anchor}
             open={left[anchor]}
@@ -75,4 +75,4 @@ const SwipeableTemporaryDrawer = (props) => {
   );
 }
 
-export default SwipeableTemporaryDrawer;
+export default Sidebar;
