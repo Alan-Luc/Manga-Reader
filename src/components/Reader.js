@@ -80,7 +80,7 @@ const Reader = () =>{
             <SwipeableTemporaryDrawer setVert={setVertical} size={setSize} vert={vertical}/>
           </div>
           <div className="zoom">
-            <IconButton onClick={() => {(size < 1200) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>
+            <IconButton onClick={() => {(size < 1000) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>
             <IconButton onClick={() => {(size > 600) && setSize(prev => prev - 100)}}><ZoomOutIcon/></IconButton>
           </div>
           {!vertical &&
