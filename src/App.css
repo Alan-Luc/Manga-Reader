@@ -6,6 +6,8 @@
 .hApp {
   text-align: center;
   background-color: #3a3b3c;
+  height: 53.8vw;
+  
 }
 
 form{
@@ -51,7 +53,7 @@ form{
   user-select: none;
 }
 
-.pp {
+.sidebar {
   padding-top: 0.5vw;
   color: white;
   text-align: left;
@@ -74,17 +76,18 @@ form{
 .box {
   display: flex;
   flex-direction: row;
+  background-color: #3a3b3c;
 }
 .box1 {
   width: 46.5vw;
-  height: 1100px;
+  height: 110%;
   z-index: 1;
   left: 3.5vw;
   position: absolute;
 }
 .box2 {
   width: 46.5vw;
-  height: 1100px;
+  height: 110%;
   z-index: 1;
   position: absolute;
   left:50vw;

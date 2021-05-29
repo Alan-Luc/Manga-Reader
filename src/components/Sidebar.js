@@ -15,6 +15,7 @@ import AspectRatioIcon from '@material-ui/icons/AspectRatio';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import CreateIcon from '@material-ui/icons/Create';
 
 
 const useStyles = makeStyles({
@@ -49,9 +50,13 @@ const Sidebar = (props) => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
+        <ListItem style={{marginLeft: "1vw"}}>
+          {props.title}
+        </ListItem>
         <ListItem button onClick={() => props.setVert(prev => !prev)}>
           <MenuBookIcon style={{ marginRight: '10px'}}/>{!props.vert ? "Vertical mode" : "Horizontal mode"} 
         </ListItem> 
+         
       </List>
     </div>
   );

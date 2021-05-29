@@ -9,6 +9,7 @@ import ZoomOutIcon from '@material-ui/icons/ZoomOut';
 const Reader = () =>{
     const [pages, setPages] = useState();
     const [toggle, setToggle] = useState(false);
+    const [title, setTitle] = useState()
     const [query, setQuery] = useState();
     const hash = window.location.pathname.split("/");
     const [vertical, setVertical] = useState(true);
@@ -23,8 +24,6 @@ const Reader = () =>{
       console.log(hash);
       getPages();
     }, [query]);
-
-    //const accessToken = "Bearer 6b478c21d23e90b19dbcaf8523c28659d422716b"
 
     //for testing
     /*const obj = [
@@ -48,8 +47,11 @@ const Reader = () =>{
       }
     ]*/
 
+    //const a = "One Piece Chapter 1014";
+
     //const [toggle, setToggle] = useState(true); // for testing
     //const [pages, setPages] = useState(obj); // for testing
+    //const [title, setTitle] = useState(a); // for testing
 
     const getPages = async () =>{ 
       if(query !== ""){
@@ -61,6 +63,7 @@ const Reader = () =>{
         });
         const data = await api_call.json();
         setPages(data.data.images);
+        setTitle(data.data.title);
         if(data.success){
           setToggle(true);
         }
@@ -76,13 +79,12 @@ const Reader = () =>{
 
     return(
         <div className={vertical ? "vApp" : "hApp"}>
-
-          <div className = "pp">
-            <Sidebar setVert={setVertical} size={setSize} vert={vertical}/>
+          <div className = "sidebar">
+            <Sidebar setVert={setVertical} size={setSize} vert={vertical} title={title}/>
           </div>
           <div className="zoom">
             <IconButton onClick={() => {(size < 1000) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>
-            <IconButton onClick={() => {(size > 600) && setSize(prev => prev - 100)}}><ZoomOutIcon/></IconButton>
+            <IconButton onClick={() => {(size > 200) && setSize(prev => prev - 100)}}><ZoomOutIcon/></IconButton>
           </div>
           {!vertical &&
           <div className="pageSelect">
