@@ -50,7 +50,7 @@ const Sidebar = (props) => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem style={{marginLeft: "1vw"}}>
+        <ListItem style={{marginLeft: "2.2vw"}}>
           {props.title}
         </ListItem>
         <ListItem button onClick={() => props.setVert(prev => !prev)}>

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Sidebar from "./Sidebar";
-import SelectPage from "./SelectPage";
+import Sidebar from "../Sidebar";
+import SelectPage from "../SelectPage";
 import IconButton from '@material-ui/core/IconButton';
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
 import ZoomOutIcon from '@material-ui/icons/ZoomOut';
 
-const Reader = () =>{
+const ImgurReader = () =>{
     const [pages, setPages] = useState();
     const [toggle, setToggle] = useState(false);
     const [title, setTitle] = useState()
@@ -106,4 +106,4 @@ const Reader = () =>{
     )
 }
 
-export default Reader;
+export default ImgurReader;

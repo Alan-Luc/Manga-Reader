@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import './Search.css'
 
 
-const Search = () => {
+const ImgurSearch = () => {
     const [link, setLink] = useState();
           
     return (
-        <div className = "joinOuterContainer">
-            <form className ="joinInnerContainer">
-                <h1 className ="heading">Read Manga</h1>
+        <div className="joinOuterContainerImgur">
+            <form className="joinInnerContainer">
+                <h1 className="headingImgur">Read from Imgur</h1>
                 <div>
                     <input 
                         type ='text'
@@ -22,11 +22,11 @@ const Search = () => {
                 </div> 
                {link && 
                 <Link to={`/read/imgur/${link[1]}`} >
-                    <button className ={'button mt-20'}>Read</button>
+                    <button className ={'buttonImgur mt-20'}>Read</button>
                 </Link>}
             </form>
         </div>
     )
 }
 
-export default Search;
+export default ImgurSearch;

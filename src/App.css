@@ -171,3 +171,23 @@ form{
   }
 }
 
+.chapters{
+  border-style: solid;
+  width: 1000px;
+  height: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chapter{
+  color:#eca1a6;
+  border-style: solid;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chapter:hover{
+  color: azure;
+}
+
