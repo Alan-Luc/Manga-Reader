@@ -20,8 +20,8 @@ const MangaDexReader = () => {
   const [num, setNum] = useState();
   //const [cover, setCover] = useState();
 
-  const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=30`;
-  const mangaURL = `https://api.mangadex.org/manga?title=${query}`
+  const chaptersURL = `https://cors-anywhere.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=30`;
+  const mangaURL = `https://cors-anywhere.herokuapp.com/https://api.mangadex.org/manga?title=${query}`
 
   useEffect(() => {
     const title = window.location.hash.split("/").slice(3);
@@ -115,8 +115,8 @@ const MangaDexReader = () => {
             {vertical && activeChapter.data.attributes.data.map(item => <img className="vMangaPage" src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`} alt="page"  key={uuidv4()} width={size}/>)}
           </div>
           {!vertical &&
-            <div >
-              <div className="box" >
+            <div>
+              <div className="box">
                 <div className="box1" onClick={() => {count > 0 && setCount(prev => prev - 1)}}></div>
                 <img className="hMangaPage" src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${activeChapter.data.attributes.data[count]}`} alt="manga page" width={size}/>
                 <div className="box2" onClick={() => {count < (activeChapter.data.attributes.data.length - 1) && setCount(prev => prev + 1)}}></div>
