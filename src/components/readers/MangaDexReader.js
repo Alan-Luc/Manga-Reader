@@ -9,69 +9,58 @@ import SelectPage from "../SelectPage";
 const MangaDexReader = () => {
   const [query, setQuery] = useState("");
   const [mangaID, setMangaID] = useState("");
-  const [listing, setList] = useState("");
-  const [viewChapters,setViewChapters] = useState(false);
+  //const [listing, setList] = useState("");
+  //const [viewChapters,setViewChapters] = useState(false);
   const [viewChapter,setViewChapter] = useState(false);
   //const [found, setFound] = useState(false);
   const [activeChapter, setActiveChapter] = useState();
   const [vertical, setVertical] = useState(true);
   const [size, setSize] = useState(700);
   const [count, setCount] = useState(0);
-  const [num, setNum] = useState();
+  //const [num, setNum] = useState();
+  const [info, setInfo] = useState(window.location.hash.split("/").slice(3));
   //const [cover, setCover] = useState();
 
-  const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=30`;
-  const mangaURL = `https://api.mangadex.org/manga?title=${query}`
+  const chaptersURL = `https://cors-anywhere.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&chapter=${info[1]}`;
+  const mangaURL = `https://cors-anywhere.herokuapp.com/https://api.mangadex.org/manga?title=${query}`
 
   useEffect(() => {
-    const title = window.location.hash.split("/").slice(3);
-    setQuery(title[0].split("%20").join(" "));
+    setQuery(info[0].split("%20").join(" "));
     //console.log(query);
     //console.log(title);
     getManga();
   }, [query])
 
   useEffect(()=>{
-    getList();
+    getChapter();
   }, [mangaID])
 
-  /*const getCover = async (e) =>{
-    const api_call = await fetch(`https://api.mangadex.org/cover/${e}`);
-    const data = await api_call.json();
-    setCover(data.data.attributes.fileName)
-  }*/
-
   const getManga = async () =>{
-    const api_call = await fetch(mangaURL, {mode: "cors"});
+    const api_call = await fetch(mangaURL);
     const data = await api_call.json();
     if(data.results.length !== 0){
       setMangaID(data.results[0].data.id);
       //setQuery("");
     }
-    //getCover(data.results[0].relationships[3].id);
-    /*if(data.results[0].result === "ok"){
-      //console.log(mangaID);
-      setFound(true);
-    }*/
   }
 
-  const getList = async () => {
+  const getChapter = async () => {
     if(mangaID !== ""){
       const api_call = await fetch(chaptersURL);
       const data = await api_call.json();
-      setList(data.results);
-      //console.log(listing);
-      setViewChapters(true);
+      //setList(data.results);
+      setActiveChapter(data.results[0]);
+      setViewChapter(true);
     }
   }
 
-  const getChapter = (e,n) =>{
+  /*const getChapter = (e,n) =>{
     setActiveChapter(e);
     setNum(n);
     console.log(n);
     setViewChapters(false);
     setViewChapter(true);
-  }
+  }*/
 
   /*const getChapter = (e) =>{
     setActiveChapter(e);
@@ -81,11 +70,10 @@ const MangaDexReader = () => {
 
   return (
     <div className={vertical ? "vApp" : "hApp"}>
-      {viewChapters && 
+      {/*viewChapters && 
         <div className="chapters">
-          {/*<img src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`} alt="cover"/>*/}
           {listing.map((item,id) => <h2 className="chapter" onClick={() => getChapter(item,id)} key={uuidv4()}>{item.data.attributes.title} &emsp; ch:{item.data.attributes.chapter}</h2>)}
-        </div>}
+      </div>*/}
       {/*viewChapter &&
         <div>
           {list.map(item => <h1 onClick={getChapter(item)} key={uuidv4()}>{item.data.attributes.title}</h1>)}
@@ -104,13 +92,13 @@ const MangaDexReader = () => {
           <div className="pageSelect">
             <SelectPage pages={activeChapter.data.attributes.data} counter={count} newCount={setCount} vert={vertical}/>
           </div>}
-          <button 
+          {/*<button 
             onClick={() => {  
                               setVertical(true);
                               setViewChapter(false);
-                              setViewChapters(true);
+                              //setViewChapters(true);
                           }}>Back
-          </button>
+                        </button>*/}
           <div className="pages">
             {vertical && activeChapter.data.attributes.data.map(item => <img className="vMangaPage" src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`} alt="page"  key={uuidv4()} width={size}/>)}
           </div>

@@ -171,23 +171,27 @@ form{
   }
 }
 
+.viewChapters{
+  background-color: #3a3b3c;
+  text-align: center;
+}
+
 .chapters{
-  border-style: solid;
-  width: 1000px;
-  height: 100vw;
   margin-left: auto;
   margin-right: auto;
 }
 
 .chapter{
   color:#eca1a6;
-  border-style: solid;
-  width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .chapter:hover{
   color: azure;
+}
+
+.chapter:link{
+  text-decoration: none;
 }
 

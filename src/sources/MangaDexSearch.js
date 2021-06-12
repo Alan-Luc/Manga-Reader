@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 
 const MangaDexSearch = () => {
     const [link, setLink] = useState("");
@@ -8,8 +7,8 @@ const MangaDexSearch = () => {
     const [mangaID, setMangaID] = useState("");
     //const [listing, setList] = useState("");
     //const [a,setA] = useState(false);
-    const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=10`;
-    const mangaURL = `https://api.mangadex.org/manga?title=${link}`
+    //const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=10`;
+    const mangaURL = `https://cors-anywhere.herokuapp.com/https://api.mangadex.org/manga?title=${link}`
 
 
     useEffect(()=>{
@@ -20,7 +19,7 @@ const MangaDexSearch = () => {
     }, [mangaID])
 
     const getManga = async () =>{
-        const api_call = await fetch(mangaURL, {mode: "cors"});
+        const api_call = await fetch(mangaURL);
         const data = await api_call.json();
         if(data.results.length !== 0){
           setMangaID(data.results[0].data.id);
