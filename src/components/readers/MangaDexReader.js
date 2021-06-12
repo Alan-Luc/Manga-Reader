@@ -20,8 +20,8 @@ const MangaDexReader = () => {
   const [num, setNum] = useState();
   //const [cover, setCover] = useState();
 
-  const chaptersURL = `https://cors-anywhere.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=30`;
-  const mangaURL = `https://cors-anywhere.herokuapp.com/https://api.mangadex.org/manga?title=${query}`
+  const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=30`;
+  const mangaURL = `https://api.mangadex.org/manga?title=${query}`
 
   useEffect(() => {
     const title = window.location.hash.split("/").slice(3);
@@ -42,7 +42,7 @@ const MangaDexReader = () => {
   }*/
 
   const getManga = async () =>{
-    const api_call = await fetch(mangaURL);
+    const api_call = await fetch(mangaURL, {mode: "cors"});
     const data = await api_call.json();
     if(data.results.length !== 0){
       setMangaID(data.results[0].data.id);
