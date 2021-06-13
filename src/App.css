@@ -179,10 +179,11 @@ form{
 .chapters{
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 40px;
 }
 
 .chapter{
-  color:#eca1a6;
+  color:#43abc9;
   margin-left: auto;
   margin-right: auto;
 }
@@ -195,3 +196,14 @@ form{
   text-decoration: none;
 }
 
+header{
+  font-size: 30px; 
+  letter-spacing: -1px; 
+  color: #DFBF84; 
+  text-transform: uppercase; 
+  text-shadow: 1px 1px 0 #000;
+  margin: 10px 0 24px; 
+  text-align: center; 
+  line-height: 50px; 
+  margin-top: auto;
+}

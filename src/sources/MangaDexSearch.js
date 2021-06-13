@@ -7,8 +7,8 @@ const MangaDexSearch = () => {
     const [mangaID, setMangaID] = useState("");
     //const [listing, setList] = useState("");
     //const [a,setA] = useState(false);
-    //const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=10`;
-    const mangaURL = `https://cors-anywhere.herokuapp.com/https://api.mangadex.org/manga?title=${link}`
+    //cdconst chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=10`;
+    const mangaURL = `https://api.mangadex.org/manga?title=${link}`
 
 
     useEffect(()=>{

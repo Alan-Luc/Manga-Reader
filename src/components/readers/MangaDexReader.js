@@ -14,6 +14,7 @@ const MangaDexReader = () => {
   const [viewChapter,setViewChapter] = useState(false);
   //const [found, setFound] = useState(false);
   const [activeChapter, setActiveChapter] = useState();
+  const [title, setTitle] = useState("");
   const [vertical, setVertical] = useState(true);
   const [size, setSize] = useState(700);
   const [count, setCount] = useState(0);
@@ -21,8 +22,8 @@ const MangaDexReader = () => {
   const [info, setInfo] = useState(window.location.hash.split("/").slice(3));
   //const [cover, setCover] = useState();
 
-  const chaptersURL = `https://cors-anywhere.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&chapter=${info[1]}`;
-  const mangaURL = `https://cors-anywhere.herokuapp.com/https://api.mangadex.org/manga?title=${query}`
+  const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&chapter=${info[1]}`;
+  const mangaURL = `https://api.mangadex.org/manga?title=${query}`
 
   useEffect(() => {
     setQuery(info[0].split("%20").join(" "));
@@ -40,6 +41,7 @@ const MangaDexReader = () => {
     const data = await api_call.json();
     if(data.results.length !== 0){
       setMangaID(data.results[0].data.id);
+      setTitle(data.results[0].data.attributes.title.en);
       //setQuery("");
     }
   }
@@ -82,7 +84,7 @@ const MangaDexReader = () => {
       {viewChapter && 
         <div>
           <div className = "sidebar">
-            <Sidebar setVert={setVertical} size={setSize} vert={vertical} title={query}/>
+            <Sidebar setVert={setVertical} size={setSize} vert={vertical} title={title}/>
           </div>
           <div className="zoom">
             <IconButton onClick={() => {(size < 1000) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>
