@@ -19,7 +19,7 @@ const MangaDexSearch = () => {
     }, [mangaID])
 
     const getManga = async () =>{
-        const api_call = await fetch(mangaURL);
+        const api_call = await fetch(mangaURL, {headers: {'Access-Control-Allow-Origin': '*'}});
         const data = await api_call.json();
         if(data.results.length !== 0){
           setMangaID(data.results[0].data.id);
