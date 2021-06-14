@@ -1,8 +1,15 @@
-const proxy = require("http-proxy-middleware")
+const { creatyProxyMiddlware } = require("http-proxy-middleware")
 
-module.export = (app) => {
+module.exports = (app) => {
     app.use(
-        proxy("/", {
+        createProxyMiddleware("/manga", {
+            target: "https://api.mangadex.org",
+            changeOrigin: true
+        })
+    );
+
+    app.use(
+        createProxyMiddleware("/chapter", {
             target: "https://api.mangadex.org",
             changeOrigin: true
         })
