@@ -29,13 +29,13 @@ const MangaDexChapters = () =>{
     }, [mangaID])
 
     const getCover = async (e) =>{
-        const api_call = await fetch(`https://api.mangadex.org/cover/${e}`);
+        const api_call = await fetch(`https://api.mangadex.org/cover/${e}`,{headers: {'Access-Control-Allow-Origin': '*'}});
         const data = await api_call.json();
         setCover(data.data.attributes.fileName);
     }
 
     const getManga = async () =>{
-        const api_call = await fetch(mangaURL);
+        const api_call = await fetch(mangaURL,{headers: {'Access-Control-Allow-Origin': '*'}});
         const data = await api_call.json();
         if(data.results.length !== 0){
             setMangaID(data.results[0].data.id);
@@ -52,7 +52,7 @@ const MangaDexChapters = () =>{
 
     const getList = async () => {
         if(mangaID !== ""){
-            const api_call = await fetch(chaptersURL);
+            const api_call = await fetch(chaptersURL,{headers: {'Access-Control-Allow-Origin': '*'}});
             const data = await api_call.json();
             setList(data.results);
             setViewChapters(true);
