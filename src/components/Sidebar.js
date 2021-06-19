@@ -4,18 +4,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
+//import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+/*import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import MailIcon from '@material-ui/icons/Mail';*/
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import AspectRatioIcon from '@material-ui/icons/AspectRatio';
+//import AspectRatioIcon from '@material-ui/icons/AspectRatio';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
-import Menu from '@material-ui/core/Menu';
+/*import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import CreateIcon from '@material-ui/icons/Create';
+import CreateIcon from '@material-ui/icons/Create';*/
 
 
 const useStyles = makeStyles({
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 const Sidebar = (props) => {
   const classes = useStyles();
   const [left, setLeft] = useState(false);
-  const [toggle, setToggle] = useState(false);
+  //const [toggle, setToggle] = useState(false);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {

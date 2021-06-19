@@ -7,7 +7,7 @@ const path = require("path");
 const PORT = process.env.PORT || 8000;
 
 const corsOptions = {
-    origin: "https://simplemangareader.netlify.app/",
+    origin: "https://simplemangareader.netlify.app",
     methods: ["GET"],
     allowedHeaders: ["Access-Control-Allow-Origin"],
     credentials: true,

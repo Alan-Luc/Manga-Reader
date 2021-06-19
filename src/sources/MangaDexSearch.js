@@ -8,8 +8,8 @@ const MangaDexSearch = () => {
     //const [listing, setList] = useState("");
     //const [a,setA] = useState(false);
     //cdconst chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=10`;
-    const mangaURL = `https://api.mangadex.org/manga?title=${link}`
-
+    //const mangaURL = `https://api.mangadex.org/manga?title=${link}`
+    const mangaURL = "https://testing-dep.herokuapp.com/manga";
 
     useEffect(()=>{
         //getList();
@@ -19,7 +19,12 @@ const MangaDexSearch = () => {
     }, [mangaID])
 
     const getManga = async () =>{
-        const api_call = await fetch(mangaURL, {headers: {'Access-Control-Allow-Origin': '*'}});
+        const api_call = await fetch(mangaURL,{
+            method: "GET",
+            headers: {
+                title: `${link}`,
+            }
+        },);
         const data = await api_call.json();
         if(data.results.length !== 0){
           setMangaID(data.results[0].data.id);

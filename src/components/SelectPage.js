@@ -37,11 +37,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SelectPage(props) {
+const SelectPage = (props) => {
   const classes = useStyles();
   const [page, setPage] = useState(props.counter + 1);
   const [open, setOpen] = useState(false);
-  const [total, setTotal] = useState(props.pages);
+  const total = props.pages;
 
   useEffect(()=>{
     setPage(props.counter + 1);

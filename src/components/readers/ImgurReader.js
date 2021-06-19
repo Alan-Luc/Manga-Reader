@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Sidebar from "../Sidebar";
 import SelectPage from "../SelectPage";
@@ -11,11 +11,11 @@ const ImgurReader = () =>{
     const [toggle, setToggle] = useState(false);
     const [title, setTitle] = useState()
     const [query, setQuery] = useState();
-    const hash = window.location.pathname.split("/");
     const [vertical, setVertical] = useState(true);
     const [count, setCount] = useState(0);
     const [size, setSize] = useState(800);
-    const [openNav, setOpenNav] = useState(false);
+    //const [openNav, setOpenNav] = useState(false);
+    const nextChapter = false;
 
     useEffect(() => {
       const hash = window.location.hash.split("/")
@@ -80,7 +80,7 @@ const ImgurReader = () =>{
     return(
         <div className={vertical ? "vApp" : "hApp"}>
           <div className = "sidebar">
-            <Sidebar setVert={setVertical} size={setSize} vert={vertical} title={title}/>
+            <Sidebar setVert={setVertical} size={setSize} vert={vertical} title={title} next={nextChapter}/>
           </div>
           <div className="zoom">
             <IconButton onClick={() => {(size < 1000) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>
