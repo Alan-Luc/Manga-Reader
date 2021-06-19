@@ -8,7 +8,7 @@ const MangaDexSearch = () => {
     //const [listing, setList] = useState("");
     //const [a,setA] = useState(false);
     //const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=10`;
-    const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${link}`
+    const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${link}`;
     //const mangaURL = "https://testing-dep.herokuapp.com/manga";
 
     useEffect(()=>{
@@ -21,7 +21,6 @@ const MangaDexSearch = () => {
     const getManga = async () =>{
         const api_call = await fetch(mangaURL);
         const data = await api_call.json();
-        console(data);
         if(data.results.length !== 0){
           setMangaID(data.results[0].data.id);
           //setCurrent(link);
