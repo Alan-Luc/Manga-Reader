@@ -21,10 +21,10 @@ const MangaDexReader = () => {
   const [current, setCurrent] = useState("");
   //const [nextChapter, setNextChapter] = useState(true);
 
-  //const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&chapter=${current}`;
-  //const mangaURL = `https://api.mangadex.org/manga?title=${query}`
-  const mangaURL = "https://testing-dep.herokuapp.com/manga";
-  const chaptersURL = "https://testing-dep.herokuapp.com/chapter";
+  const chaptersURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&chapter=${current}`;
+  const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${query}`
+  //const mangaURL = "https://testing-dep.herokuapp.com/manga";
+  //const chaptersURL = "https://testing-dep.herokuapp.com/chapter";
 
   useEffect(() => {
     setQuery(info[0].split("%20").join(" "));
@@ -39,12 +39,7 @@ const MangaDexReader = () => {
   }, [mangaID])
 
   const getManga = async () =>{
-    const api_call = await fetch(mangaURL,{
-      method: "GET",
-      headers: {
-          title: `${query}`,
-      }
-    });
+    const api_call = await fetch(mangaURL);
     const data = await api_call.json();
     if(data.results.length !== 0){
       setMangaID(data.results[0].data.id);
@@ -55,14 +50,7 @@ const MangaDexReader = () => {
 
   const getChapter = async () => {
     if(mangaID !== ""){
-      const api_call = await fetch(chaptersURL,{
-        method: "GET",
-        headers: {
-            manga: `${mangaID}`,
-            language : "en",
-            chapter : `${current}`
-        }
-      });
+      const api_call = await fetch(chaptersURL);
       const data = await api_call.json();
       //setList(data.results);
       setActiveChapter(data.results[0]);

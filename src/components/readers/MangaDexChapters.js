@@ -13,11 +13,11 @@ const MangaDexChapters = () =>{
     //const [activeChapter, setActiveChapter] = useState();
     const [cover, setCover] = useState();
 
-    //const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&offset=${offset}&limit=30`;
-    //const mangaURL = `https://api.mangadex.org/manga?title=${query}`
-    const mangaURL = "https://testing-dep.herokuapp.com/manga";
-    const chaptersURL = "https://testing-dep.herokuapp.com/chapter2";
-    const coverURL = "https://testing-dep.herokuapp.com/cover";
+    const chaptersURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&offset=${offset}&limit=30`;
+    const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${query}`;
+    //const mangaURL = "https://testing-dep.herokuapp.com/manga";
+    //const chaptersURL = "https://testing-dep.herokuapp.com/chapter2";
+    //const coverURL = "https://testing-dep.herokuapp.com/cover";
     const mangaTitle = window.location.hash.split("/").slice(3);
 
     useEffect(() => {
@@ -37,23 +37,13 @@ const MangaDexChapters = () =>{
     }, [offset]);
 
     const getCover = async (e) =>{
-        const api_call = await fetch(coverURL, {
-            method: "GET", 
-            headers: {
-                id: `${e}`
-            }
-        });
+        const api_call = await fetch(`https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/cover${e}`);
         const data = await api_call.json();
         setCover(data.data.attributes.fileName);
     }
 
     const getManga = async () =>{
-        const api_call = await fetch(mangaURL, {
-            method: "GET",
-            headers: {
-              title: `${query}`
-            }
-        });
+        const api_call = await fetch(mangaURL);
         const data = await api_call.json();
         if(data.results.length !== 0){
             setMangaID(data.results[0].data.id);
@@ -70,15 +60,7 @@ const MangaDexChapters = () =>{
 
     const getList = async () => {
         if(mangaID !== ""){
-            const api_call = await fetch(chaptersURL,{
-                method: "GET",
-                headers: {
-                    manga: `${mangaID}`,
-                    language : "en",
-                    limit: "30",
-                    offset: `${offset}`
-                },
-            });
+            const api_call = await fetch(chaptersURL);
             const data = await api_call.json();
             setListing(data.results);
             setViewChapters(true);
