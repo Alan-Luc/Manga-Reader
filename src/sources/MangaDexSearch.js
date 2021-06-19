@@ -23,9 +23,12 @@ const MangaDexSearch = () => {
             method: "GET",
             headers: {
                 title: `${link}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         },);
         const data = await api_call.json();
+        console(data);
         if(data.results.length !== 0){
           setMangaID(data.results[0].data.id);
           //setCurrent(link);
