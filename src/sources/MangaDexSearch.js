@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const MangaDexSearch = () => {
     const [link, setLink] = useState("");
@@ -7,6 +7,7 @@ const MangaDexSearch = () => {
     const [mangaID, setMangaID] = useState("");
     //const [listing, setList] = useState("");
     //const [a,setA] = useState(false);
+    //const [found, setFound] = useState(true);
     //const chaptersURL = `https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&limit=10`;
     const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${link}`;
     //const mangaURL = "https://testing-dep.herokuapp.com/manga";
@@ -24,9 +25,11 @@ const MangaDexSearch = () => {
         if(data.results.length !== 0){
           setMangaID(data.results[0].data.id);
           //setCurrent(link);
+          //setFound(true);
         }
         else{
-            setLink("");
+            setLink("")
+            //setFound(false);
         }
         //getCover(data.results[0].relationships[3].id);
         /*if(data.results[0].result === "ok"){
@@ -73,7 +76,7 @@ const MangaDexSearch = () => {
                         required
                     />
                 </div> 
-                {link && <Link to={`/read/mangadex/${link}`}>
+                {link && <Link to={{pathname: `/read/mangadex/${link}`, /*state: {found: found}*/}}>
                     <button className ={'buttonDex mt-20'}>Search</button>
                 </Link>}
             </form>

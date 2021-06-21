@@ -94,6 +94,14 @@ html, body {
   width: 100%;
 }
 
+.mt-10:hover{
+  background-color:#1BB76E;
+}
+
+.mt-20:hover{
+  background-color:#FE8D3D;
+}
+
 .buttonImgur {
   color: #fff !important;
   text-transform: uppercase;
@@ -104,6 +112,7 @@ html, body {
   display: inline-block;
   border: none;
   width: 100%;
+  margin-top: 5px;
 }
 
 .buttonDex {
@@ -116,10 +125,7 @@ html, body {
   display: inline-block;
   border: none;
   width: 100%;
-}
-
-.mt-20 {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
@@ -136,5 +142,5 @@ html, body {
 
 button:focus {
   outline: 0;
-  color: #eca1a6;
+  color:#FE8D3D;
 }

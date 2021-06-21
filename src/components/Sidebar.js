@@ -16,7 +16,10 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 /*import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import CreateIcon from '@material-ui/icons/Create';*/
-
+import FastForwardIcon from '@material-ui/icons/FastForward';
+import FastRewindIcon from '@material-ui/icons/FastRewind';
+import SearchIcon from '@material-ui/icons/Search';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
@@ -56,7 +59,21 @@ const Sidebar = (props) => {
         <ListItem button onClick={() => props.setVert(prev => !prev)}>
           <MenuBookIcon style={{ marginRight: '10px'}}/>{!props.vert ? "Vertical mode" : "Horizontal mode"} 
         </ListItem> 
-         
+        <Link style={{color: "black", textDecoration: "none"}} to={(props.chapter > 1) && `/read/mangadex/${props.manga}/${(parseInt(props.chapter) - 1).toString()}`}>      
+          <ListItem button>
+            <FastRewindIcon style={{ marginRight: '10px', textDecoration: "none"}}/>{"Previous Chapter"} 
+          </ListItem> 
+        </Link>
+        <Link style={{color: "black", textDecoration: "none"}} to={`/read/mangadex/${props.manga}/${(parseInt(props.chapter) + 1).toString()}`}>
+          <ListItem button>
+            <FastForwardIcon style={{ marginRight: '10px'}}/>{"Next Chapter"} 
+          </ListItem>
+        </Link>
+        <Link style={{color: "black", textDecoration: "none"}} to={`/search/mangadex/`}>
+          <ListItem button>
+            <SearchIcon style={{ marginRight: '10px'}}/>{"Back to Search"} 
+          </ListItem>
+        </Link> 
       </List>
     </div>
   );

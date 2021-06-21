@@ -70,14 +70,17 @@ form{
   position: fixed;
   z-index: 2;
 }
+
 .zoom:focus {
   color: white;
 }
+
 .box {
   display: flex;
   flex-direction: row;
   background-color: #3a3b3c;
 }
+
 .box1 {
   width: 46.5vw;
   height: 110%;
@@ -174,18 +177,28 @@ form{
 .viewChapters{
   background-color: #3a3b3c;
   text-align: center;
+  width: 100vw;
 }
 
 .chapters{
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .chapter{
-  color:#43abc9;
+  color: #cae3c6;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  background: #415865;
+  border-radius: 5px;
+  display: inline-block;
+  border: solid;
+  width: 70vw;
+  text-align: center;
 }
 
 .chapter:hover{
@@ -202,8 +215,30 @@ header{
   color: #DFBF84; 
   text-transform: uppercase; 
   text-shadow: 1px 1px 0 #000;
-  margin: 10px 0 24px; 
   text-align: center; 
   line-height: 50px; 
   margin-top: auto;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.viewManga {
+  height: 1000px;
+  width: 100vw;
+  background-color: #3a3b3c;
+  color: #3a3b3c;
+  text-align: center;
 }

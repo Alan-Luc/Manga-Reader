@@ -22,7 +22,7 @@ const MangaDexReader = () => {
   //const [nextChapter, setNextChapter] = useState(true);
 
   const chaptersURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&chapter=${current}`;
-  const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${query}`
+  //const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${query}`
   //const mangaURL = "https://testing-dep.herokuapp.com/manga";
   //const chaptersURL = "https://testing-dep.herokuapp.com/chapter";
 
@@ -31,14 +31,14 @@ const MangaDexReader = () => {
     setCurrent(info[1]);
     //console.log(query);
     //console.log(title);
-    getManga();
-  }, [query])
+    setMangaID(info[0]);
+  }, [info])
 
   useEffect(()=>{
     getChapter();
-  }, [mangaID])
+  }, [current])
 
-  const getManga = async () =>{
+  /*const getManga = async () =>{
     const api_call = await fetch(mangaURL);
     const data = await api_call.json();
     if(data.results.length !== 0){
@@ -46,15 +46,18 @@ const MangaDexReader = () => {
       setTitle(data.results[0].data.attributes.title.en);
       //setQuery("");
     }
-  }
+  }*/
 
   const getChapter = async () => {
     if(mangaID !== ""){
       const api_call = await fetch(chaptersURL);
       const data = await api_call.json();
       //setList(data.results);
-      setActiveChapter(data.results[0]);
-      setViewChapter(true);
+      if(data.results.length !== 0){
+        setTitle(data.results[0].data.attributes.title);
+        setActiveChapter(data.results[0]);
+        setViewChapter(true);
+      }
     }
   }
 
@@ -86,7 +89,7 @@ const MangaDexReader = () => {
       {viewChapter && 
         <div>
           <div className = "sidebar">
-            <Sidebar setVert={setVertical} size={setSize} vert={vertical} title={title}/>
+            <Sidebar setVert={setVertical} size={setSize} vert={vertical} title={title} manga={mangaID} chapter={current}/>
           </div>
           <div className="zoom">
             <IconButton onClick={() => {(size < 1000) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>

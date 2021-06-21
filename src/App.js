@@ -7,6 +7,7 @@ import MangaDexSearch from "./sources/MangaDexSearch";
 import ImgurReader from "./components/readers/ImgurReader";
 import MangaDexReader from "./components/readers/MangaDexReader";
 import MangaDexChapters from './components/readers/MangaDexChapters';
+import PageNotFound from './components/PageNotFound';
 
 const App = () => {
   return(
@@ -17,6 +18,7 @@ const App = () => {
       <Route exact path='/read/imgur/:hash' component={ImgurReader}/>
       <Route exact path='/read/mangadex/:title' component={MangaDexChapters}/>
       <Route exact path='/read/mangadex/:title/:chapter' component={MangaDexReader}/>
+      <Route component={PageNotFound}/>
     </Switch>
   )
 }
