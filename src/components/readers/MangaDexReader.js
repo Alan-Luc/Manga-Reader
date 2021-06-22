@@ -32,6 +32,7 @@ const MangaDexReader = () => {
     //console.log(query);
     //console.log(title);
     setMangaID(info[0]);
+    setCount(0);
   }, [info])
 
   useEffect(()=>{
