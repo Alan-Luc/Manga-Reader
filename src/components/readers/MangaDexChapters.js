@@ -21,19 +21,19 @@ const MangaDexChapters = () =>{
     const [done, setDone] = useState(undefined);
 
     const chaptersURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&offset=${offset}&limit=30`;
-    const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${query}`;
+    const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${(window.location.hash.split("/").slice(3))[0].split("%20").join(" ")}`;
     //const mangaURL = "https://testing-dep.herokuapp.com/manga";
     //const chaptersURL = "https://testing-dep.herokuapp.com/chapter2";
     //const coverURL = "https://testing-dep.herokuapp.com/cover";
-    const mangaTitle = window.location.hash.split("/").slice(3);
+    //const mangaTitle = window.location.hash.split("/").slice(3);
 
     useEffect(() => {
         //const title = window.location.hash.split("/").slice(3);
-        setQuery(mangaTitle[0].split("%20").join(" "));
+        //setQuery(mangaTitle[0].split("%20").join(" "));
         //console.log(query);
         //console.log(mangaTitle[0]);
         getMangas();
-    }, [query]);
+    }, []);
 
     useEffect(()=>{
         getList();
