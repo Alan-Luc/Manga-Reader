@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from "react";
 import { Link, Redirect, useLocation } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import ReactLoading from "react-loading";
 
 const MangaDexChapters = () =>{
     const [query, setQuery] = useState("");
@@ -17,6 +18,7 @@ const MangaDexChapters = () =>{
     const [found, setFound] = useState(true);
     //const location = useLocation();
     //const { found } = location.state;
+    const [done, setDone] = useState(undefined);
 
     const chaptersURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&offset=${offset}&limit=30`;
     const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${query}`;
@@ -48,22 +50,25 @@ const MangaDexChapters = () =>{
     }
 
     const getMangas = async () =>{
-        const api_call = await fetch(mangaURL);
-        const data = await api_call.json();
-        if(data.results.length !== 0){
-            /*const array = [];
-            data.results.map(item => array.push([item.data.attributes.title, item.data.id]));
-            console.log(array)
-            setMangas(array);
-            console.log(mangas)
-            setViewMangas(true);*/
-            //setQuery("");
-            setMangas(data.results);
-            setViewMangas(true);
-        } 
-        else if(data.results.length === 0) {
-            setFound(false);
-        }
+        setTimeout(async () => {
+            const api_call = await fetch(mangaURL);
+            const data = await api_call.json();
+            if(data.results.length !== 0){
+                /*const array = [];
+                data.results.map(item => array.push([item.data.attributes.title, item.data.id]));
+                console.log(array)
+                setMangas(array);
+                console.log(mangas)
+                setViewMangas(true);*/
+                //setQuery("");
+                setMangas(data.results);
+                setViewMangas(true);
+                setDone(true);
+            } 
+            else if(data.results.length === 0) {
+                setFound(false);
+            }
+        }, [2000]);
     }
 
 
@@ -122,10 +127,20 @@ const MangaDexChapters = () =>{
         <div className="viewChapters">
             {/*<button onClick={() => setViewMangas(prev => !prev)}></button>*/}
         {/*!found && <Redirect push to={"/notFound"}/>*/}
-        {viewMangas && 
+        {!done ? (
+            <div style= {{width: "100vw", height: "100vw", display: "flex", justifyContent: "center" }}>
+                <br></br>
+                <ReactLoading
+                    type={"cylon"}
+                    color={"#415865"}
+                    height={800}
+                    width={800}
+                />
+            </div>
+        ) : (viewMangas && 
             <div className="viewManga" styles={{paddingTop: "10vw", height: "100vw"}}>
                 {(mangas.length > 0) && mangas.map((item) => <h2 styles={{marginTop: "20px"}}className="chapter" key={uuidv4()} onClick={() => getManga(item)}>{item.data.attributes.title.en}</h2>)}
-            </div>
+            </div>)
         }
         {viewChapters &&
             <div>
