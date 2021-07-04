@@ -19,6 +19,7 @@ const MangaDexChapters = () =>{
     //const location = useLocation();
     //const { found } = location.state;
     const [done, setDone] = useState(undefined);
+    const [covers, setCovers] = useState();
 
     const chaptersURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&offset=${offset}&limit=30`;
     const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${(window.location.hash.split("/").slice(3))[0].split("%20").join(" ")}`;
@@ -48,6 +49,27 @@ const MangaDexChapters = () =>{
         const data = await api_call.json();
         setCover(data.data.attributes.fileName);
     }
+
+    /*const getCover2 = async (e) =>{
+        const api_call = await fetch(`https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/cover/${e.relationships[e.relationships.length - 1].id}`);
+        const data = await api_call.json();
+        setCovers(prev => prev.push(data.data.attributes.fileName));
+        
+    }*/
+
+    const showE = (e,i) =>{
+        //getCover2(e);
+       
+        return(
+            <div>
+                {/*<h1>{console.log(covers[i])}</h1>
+                <img src={`https://uploads.mangadex.org/covers/${mangaID}/${cover}`} alt="cover"/>*/}
+                <h2 className="chapterM" key={uuidv4()} onClick={() => getManga(e)}>{e.data.attributes.title.en}</h2>
+            </div> 
+        )
+        
+    }
+    
 
     const getMangas = async () =>{
         setTimeout(async () => {
@@ -139,21 +161,21 @@ const MangaDexChapters = () =>{
             </div>
         ) : (viewMangas && 
             <div className="viewManga" styles={{paddingTop: "10vw", height: "100vw"}}>
-                {(mangas.length > 0) && mangas.map((item) => <h2 styles={{marginTop: "20px"}}className="chapter" key={uuidv4()} onClick={() => getManga(item)}>{item.data.attributes.title.en}</h2>)}
+                {(mangas.length > 0) && mangas.map((item,id) => showE(item,id))}
             </div>)
         }
         {viewChapters &&
-            <div>
-                <button onClick={() => {setOffset(0); setViewChapters(false); setViewMangas(true);}}>Back</button>
+            <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                <button style={{height: "30px", width: "60px", marginTop: "10px"}} onClick={() => {setOffset(0); setViewChapters(false); setViewMangas(true);}}>Back</button>
                 <header>{title}</header>
                 <img src={`https://uploads.mangadex.org/covers/${mangaID}/${cover}`} alt="cover art" width="200"/>
                 <div className="chapters">
-                    {listing.map((item) => <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.data.attributes.chapter}`} key={uuidv4()}><h2 key={uuidv4()}>{item.data.attributes.title} &emsp; ch:{item.data.attributes.chapter}</h2></Link>)}
+                    {listing.map((item) => <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.data.attributes.chapter}`} key={uuidv4()}><div style={{display: "flex", flexDirection: "row"}}><h2 key={uuidv4()}>&emsp;{item.data.attributes.title}</h2><h2 style={{marginLeft: "auto"}}> {item.data.attributes.chapter}&emsp;</h2></div></Link>)}
                 </div>
-                <div>
-                    <p style={{color: "white"}}>{listing[0].data.attributes.chapter + " to " + listing[listing.length - 1].data.attributes.chapter}</p>
-                    <button onClick={prev}>{"<"}</button>
-                    <button onClick={next}>{">"}</button>
+                <div style={{marginBottom: "20px"}}>
+                    <p style={{color: "white", fontSize: "large", textAlign: "center"}}>{listing[0].data.attributes.chapter + " to " + listing[listing.length - 1].data.attributes.chapter}</p>
+                    <button style={{width: "50px", height: "50px"}} onClick={prev}>{"<"}</button>
+                    <button style={{width: "50px", height: "50px"}} onClick={next}>{">"}</button>
                     {console.log(offset)}
                 </div>
             </div>
