@@ -166,16 +166,23 @@ const MangaDexChapters = () =>{
         }
         {viewChapters &&
             <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                <button style={{height: "30px", width: "60px", marginTop: "10px"}} onClick={() => {setOffset(0); setViewChapters(false); setViewMangas(true);}}>Back</button>
+                <button className="chButton" onClick={() => {setOffset(0); setViewChapters(false); setViewMangas(true);}}>BACK</button>
                 <header>{title}</header>
                 <img src={`https://uploads.mangadex.org/covers/${mangaID}/${cover}`} alt="cover art" width="200"/>
                 <div className="chapters">
-                    {listing.map((item) => <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.data.attributes.chapter}`} key={uuidv4()}><div style={{display: "flex", flexDirection: "row"}}><h2 key={uuidv4()}>&emsp;{item.data.attributes.title}</h2><h2 style={{marginLeft: "auto"}}> {item.data.attributes.chapter}&emsp;</h2></div></Link>)}
+                    {listing.map((item) => 
+                        <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.data.attributes.chapter}`} key={uuidv4()}>
+                            <div style={{display: "flex", flexDirection: "row", height: "50px"}}>
+                                <h2 style={{position: "relative", bottom: "8px"}} key={uuidv4()}>{item.data.attributes.title}</h2>
+                                <h2 style={{marginLeft: "auto", position: "relative", bottom: "8px"}}> {item.data.attributes.chapter}</h2>
+                            </div>
+                        </Link>
+                    )}
                 </div>
                 <div style={{marginBottom: "20px"}}>
                     <p style={{color: "white", fontSize: "large", textAlign: "center"}}>{listing[0].data.attributes.chapter + " to " + listing[listing.length - 1].data.attributes.chapter}</p>
-                    <button style={{width: "50px", height: "50px"}} onClick={prev}>{"<"}</button>
-                    <button style={{width: "50px", height: "50px"}} onClick={next}>{">"}</button>
+                    <button className="arrowButtons" onClick={prev}>{"<"}</button>
+                    <button className="arrowButtons" onClick={next}>{">"}</button>
                     {console.log(offset)}
                 </div>
             </div>
