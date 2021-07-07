@@ -76,6 +76,14 @@ const MangaDexReader = () => {
     setB(true);
   }*/
 
+  const getMeta = (url) => {
+    var img = new Image();
+    img.src = url;
+    const dim = [img.height, img.width];
+    console.log(dim)
+    return dim;
+  }
+
   return (
     <div className={vertical ? "vApp" : "hApp"}>
       {/*viewChapters && 
@@ -108,13 +116,21 @@ const MangaDexReader = () => {
                           }}>Back
                         </button>*/}
           <div className="pages">
-            {vertical && activeChapter.data.attributes.data.map(item => <img className="vMangaPage" src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`} alt="page"  key={uuidv4()} width={size}/>)}
+            {vertical && activeChapter.data.attributes.data.map(item => <img className="vMangaPage" src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`} alt="page"  key={uuidv4()} width={(getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`)[1] > getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`)[0]) ? size*2 : size } />)}
           </div>
           {!vertical &&
             <div>
               <div className="box">
                 <div className="box1" onClick={() => {count > 0 && setCount(prev => prev - 1)}}></div>
-                <img className="hMangaPage" src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${activeChapter.data.attributes.data[count]}`} alt="manga page" width={size}/>
+                <img 
+                  className="hMangaPage" 
+                  src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${activeChapter.data.attributes.data[count]}`} 
+                  alt="manga page" 
+                  width={(getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${activeChapter.data.attributes.data[count]}`)[1] >
+                          getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${activeChapter.data.attributes.data[count]}`)[0]) ? 
+                          size*2 : 
+                          size }
+                />
                 <div className="box2" onClick={() => {count < (activeChapter.data.attributes.data.length - 1) && setCount(prev => prev + 1)}}></div>
               </div>
             </div>
