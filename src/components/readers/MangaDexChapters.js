@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import ReactLoading from "react-loading";
 
 const MangaDexChapters = () =>{
-    const [query, setQuery] = useState("");
+    //const [query, setQuery] = useState("");
     const [mangaID, setMangaID] = useState("");
     const [title, setTitle] = useState("");
     const [mangas, setMangas] = useState("");
@@ -19,7 +19,7 @@ const MangaDexChapters = () =>{
     //const location = useLocation();
     //const { found } = location.state;
     const [done, setDone] = useState(undefined);
-    const [covers, setCovers] = useState();
+    //const [covers, setCovers] = useState();
 
     const chaptersURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&offset=${offset}&limit=30`;
     const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${(window.location.hash.split("/").slice(3))[0].split("%20").join(" ")}`;
@@ -150,7 +150,7 @@ const MangaDexChapters = () =>{
             {/*<button onClick={() => setViewMangas(prev => !prev)}></button>*/}
         {/*!found && <Redirect push to={"/notFound"}/>*/}
         {!done ? (
-            <div style= {{width: "100vw", height: "100vw", display: "flex", justifyContent: "center" }}>
+            <div style= {{width: "100vw", height: "1350px", display: "flex", justifyContent: "center" }}>
                 <br></br>
                 <ReactLoading
                     type={"cylon"}
@@ -160,8 +160,10 @@ const MangaDexChapters = () =>{
                 />
             </div>
         ) : (viewMangas && 
-            <div className="viewManga" styles={{paddingTop: "10vw", height: "100vw"}}>
-                {(mangas.length > 0) && mangas.map((item,id) => showE(item,id))}
+            <div>
+                <div className="viewManga" styles={{paddingTop: "10vw", height: "100vw"}}>
+                    {(mangas.length > 0) && mangas.map((item,id) => showE(item,id))}
+                </div>
             </div>)
         }
         {viewChapters &&
@@ -183,7 +185,7 @@ const MangaDexChapters = () =>{
                     <p style={{color: "white", fontSize: "large", textAlign: "center"}}>{listing[0].data.attributes.chapter + " to " + listing[listing.length - 1].data.attributes.chapter}</p>
                     <button className="arrowButtons" onClick={prev}>{"<"}</button>
                     <button className="arrowButtons" onClick={next}>{">"}</button>
-                    {console.log(offset)}
+                    {/*console.log(offset)*/}
                 </div>
             </div>
         }

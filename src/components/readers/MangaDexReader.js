@@ -79,8 +79,8 @@ const MangaDexReader = () => {
   const getMeta = (url) => {
     var img = new Image();
     img.src = url;
+    console.log(img.src); 
     const dim = [img.height, img.width];
-    console.log(dim)
     return dim;
   }
 
@@ -100,9 +100,11 @@ const MangaDexReader = () => {
           <div className = "sidebar">
             <Sidebar setVert={setVertical} size={setSize} vert={vertical} title={title} manga={mangaID} chapter={current}/>
           </div>
-          <div className="zoom">
-            <IconButton onClick={() => {(size < 1000) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>
-            <IconButton onClick={() => {(size > 200) && setSize(prev => prev - 100)}}><ZoomOutIcon/></IconButton>
+          <div className="zoomBox">
+            <div className="zoom">
+              <IconButton onClick={() => {(size < 1000) && setSize(prev => prev + 100)}}><ZoomInIcon/></IconButton>
+              <IconButton onClick={() => {(size > 200) && setSize(prev => prev - 100)}}><ZoomOutIcon/></IconButton>
+            </div>
           </div>
           {!vertical &&
           <div className="pageSelect">
@@ -116,7 +118,20 @@ const MangaDexReader = () => {
                           }}>Back
                         </button>*/}
           <div className="pages">
-            {vertical && activeChapter.data.attributes.data.map(item => <img className="vMangaPage" src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`} alt="page"  key={uuidv4()} width={(getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`)[1] > getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`)[0]) ? size*2 : size } />)}
+            {vertical && activeChapter.data.attributes.data.map(item => 
+                                                                  <div>
+                                                                    {/*console.log(getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`))*/}
+                                                                    <img 
+                                                                      className="vMangaPage" 
+                                                                      src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`} 
+                                                                      alt="page"  
+                                                                      key={uuidv4()} 
+                                                                      width={(getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`)[1] >
+                                                                       getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`)[0]) ?
+                                                                       size*2 : 
+                                                                       size} 
+                                                                    />
+                                                                  </div>)}
           </div>
           {!vertical &&
             <div>

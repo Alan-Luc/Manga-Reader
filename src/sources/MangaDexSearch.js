@@ -14,7 +14,7 @@ const MangaDexSearch = () => {
 
     useEffect(()=>{
         //getList();
-        console.log(found);
+        //console.log(found);
         /*return () => {
             //setMangaID("");
             //setFound(true);
@@ -29,13 +29,13 @@ const MangaDexSearch = () => {
           setMangaID(data.results[0].data.id);
           //setCurrent(link);
           setFound(true);
-          console.log(found);
+          //console.log(found);
         }
         else{
             setLink("");
             setFound(false);
             setMangaID(data.results);
-            console.log(found);
+            //console.log(found);
         }
         //getCover(data.results[0].relationships[3].id);
         /*if(data.results[0].result === "ok"){

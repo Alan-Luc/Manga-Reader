@@ -32,8 +32,7 @@ const useStyles = makeStyles((theme) => ({
     width: 50,
     backgroundColor: "white",
     position: "fixed",
-    marginLeft: "46.95vw",
-    marginTop: "5vw"
+    marginTop: "96px"
   },
 }));
 
@@ -73,7 +72,7 @@ const SelectPage = (props) => {
   }
 
   return (
-    <div>
+    <div className="selectBox">
       {useKey("ArrowRight", handleNext)}
       {useKey("ArrowLeft", handlePrev)}
       <FormControl className={classes.formControl}>

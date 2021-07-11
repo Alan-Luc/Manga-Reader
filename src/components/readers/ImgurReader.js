@@ -20,8 +20,8 @@ const ImgurReader = () =>{
     useEffect(() => {
       const hash = window.location.hash.split("/")
       setQuery(hash[hash.length-1])
-      console.log(query);
-      console.log(hash);
+      //console.log(query);
+      //console.log(hash);
       getPages();
     }, [query]);
 
@@ -70,8 +70,8 @@ const ImgurReader = () =>{
         else{
           setToggle(false);
         }
-        console.log(data);
-        console.log(pages);
+        //console.log(data);
+        //console.log(pages);
       }
     }
     

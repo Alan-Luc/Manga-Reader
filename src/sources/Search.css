@@ -17,11 +17,13 @@ html, body {
   justify-content: center;
   text-align: center;
   height: 100vh;
-  border-color: #eca1a6;
+  border-color: #415865;
   border-width: thick;
   border-style: solid;
   align-items: center;
   background-color: #1A1A1D;
+  /*background-image: url("./main.jpg");
+  background-size: 100vw 45vw;*/
 }
 
 .joinOuterContainerImgur {
@@ -34,6 +36,8 @@ html, body {
   border-style: solid;
   align-items: center;
   background-color: #1A1A1D;
+  background-image: url("./imgur.jpg");
+  background-size: 98vw;
 }
 
 .joinOuterContainerDex {
@@ -46,6 +50,9 @@ html, body {
   border-style: solid;
   align-items: center;
   background-color: #1A1A1D;
+  /*background-image: url("./mangadex.jpg");
+  background-size: 50vw;
+  background-position: 0px -100px;*/
 }
 
 .joinInnerContainer {
@@ -63,36 +70,40 @@ html, body {
 }
 
 .heading {
-  color: #eca1a6;
+  font-weight: lighter;
+  color:#cae3c6;
   font-size: 2.5em;
   padding-bottom: 10px;
-  border-bottom: 2px solid #eca1a6;
+  border-bottom: 2px solid #cae3c6;
 }
 .headingImgur {
   color: #1BB76E;
   font-size: 2.5em;
   padding-bottom: 10px;
   border-bottom: 2px solid #1BB76E;
+  font-weight: lighter;
 }
 
 .headingDex {
-  color: #FE8D3D;
+  color:#FE8D3D;
   font-size: 2.5em;
   padding-bottom: 10px;
   border-bottom: 2px solid #FE8D3D;
+  font-weight: lighter;
 }
 
 .button {
-  color: #fff !important;
+  color: #cae3c6 !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #eca1a6;
+  background: #415865;
   padding: 20px;
   border-radius: 5px;
   display: inline-block;
   border: solid;
-  border-color: 	#B0C4DE;
+  border-color:#cae3c6;
   width: 100%;
+  font-weight:bold;
 }
 
 .mt-10:hover{
