@@ -260,11 +260,13 @@ form{
     margin-left: auto;
     position: relative; 
     bottom: 0px;
+    font-weight: 550;
   }
   
   .chapterT{
     position: relative; 
     bottom: 0px;
+    font-weight: 550;
   }
 
   .chButton{
@@ -278,7 +280,7 @@ form{
   }
 
   .chapterM{
-    font-weight: lighter;
+    font-weight: 550;
   }
 
 }
@@ -341,11 +343,13 @@ form{
     margin-left: auto;
     position: relative; 
     bottom: 0px;
+    font-weight: 550;
   }
   
   .chapterT{
     position: relative; 
     bottom: 0px;
+    font-weight: 550;
   }
 
   .chButton{
@@ -356,6 +360,10 @@ form{
   .arrowButtons{
     width: 30px;
     height: 30px;
+  }
+
+  .chapterM{
+    font-weight: 550;
   }
 }
 
