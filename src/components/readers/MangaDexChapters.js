@@ -146,7 +146,7 @@ const MangaDexChapters = () =>{
     }
 
     return (
-        <div className="viewChapters">
+        <div className={viewChapters ? "viewChaptersC" : "viewChaptersM"}>
             {/*<button onClick={() => setViewMangas(prev => !prev)}></button>*/}
         {/*!found && <Redirect push to={"/notFound"}/>*/}
         {!done ? (
@@ -174,9 +174,9 @@ const MangaDexChapters = () =>{
                 <div className="chapters">
                     {listing.map((item) => 
                         <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.data.attributes.chapter}`} key={uuidv4()}>
-                            <div style={{display: "flex", flexDirection: "row", height: "50px"}}>
-                                <h2 style={{position: "relative", bottom: "8px"}} key={uuidv4()}>{item.data.attributes.title}</h2>
-                                <h2 style={{marginLeft: "auto", position: "relative", bottom: "8px"}}> {item.data.attributes.chapter}</h2>
+                            <div className="chapterL">
+                                <h2 className="chapterT" key={uuidv4()}>{item.data.attributes.title}</h2>
+                                <h2 className="chapterN"> {item.data.attributes.chapter}</h2>
                             </div>
                         </Link>
                     )}

@@ -73,7 +73,12 @@ const Sidebar = (props) => {
           <ListItem button>
             <SearchIcon style={{ marginRight: '10px'}}/>{"Back to Search"} 
           </ListItem>
-        </Link> 
+        </Link>
+        {/*(props.history !== null) && props.history.map(item =>
+        <ListItem button onClick={() => props.setVert(prev => !prev)}>
+          <MenuBookIcon style={{ marginRight: '10px'}}/>{item.name} 
+        </ListItem> 
+        )*/}
       </List>
     </div>
   );

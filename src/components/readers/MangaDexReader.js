@@ -20,6 +20,7 @@ const MangaDexReader = () => {
   const info = window.location.hash.split("/").slice(3);
   const [current, setCurrent] = useState("");
   //const [nextChapter, setNextChapter] = useState(true);
+  //const [history, setHistory] = useState([]);
 
   const chaptersURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/chapter?manga=${mangaID}&translatedLanguage[]=en&chapter=${current}`;
   //const mangaURL = `https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga?title=${query}`
@@ -58,6 +59,11 @@ const MangaDexReader = () => {
         setTitle(data.results[0].data.attributes.title);
         setActiveChapter(data.results[0]);
         setViewChapter(true);
+        /*const hist = history;
+        hist.push({name: `${data.results[0].data.attributes.title}`, ch: `${info[1]}`});
+        setHistory(hist);
+        console.log(hist);
+        localStorage.setItem('History', JSON.stringify(history));*/
       }
     }
   }
@@ -79,7 +85,7 @@ const MangaDexReader = () => {
   const getMeta = (url) => {
     var img = new Image();
     img.src = url;
-    console.log(img.src); 
+    //console.log(img.src); 
     const dim = [img.height, img.width];
     return dim;
   }
@@ -98,7 +104,7 @@ const MangaDexReader = () => {
       {viewChapter && 
         <div>
           <div className = "sidebar">
-            <Sidebar setVert={setVertical} size={setSize} vert={vertical} title={title} manga={mangaID} chapter={current}/>
+            <Sidebar setVert={setVertical} size={setSize} vert={vertical} title={title} manga={mangaID} chapter={current} history={localStorage.getItem("History")}/>
           </div>
           <div className="zoomBox">
             <div className="zoom">
