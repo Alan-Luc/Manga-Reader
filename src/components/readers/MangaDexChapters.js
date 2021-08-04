@@ -14,6 +14,7 @@ const MangaDexChapters = () =>{
     const [viewMangas, setViewMangas] = useState(false);
     //const [viewChapter,setViewChapter] = useState(false);
     //const [activeChapter, setActiveChapter] = useState(); 
+    const [curManga, setCurManga] = useState("");
     const [cover, setCover] = useState();
     const [found, setFound] = useState(true);
     //const location = useLocation();
@@ -90,7 +91,7 @@ const MangaDexChapters = () =>{
             else if(data.results.length === 0) {
                 setFound(false);
             }
-        }, [2000]);
+        }, [1000]);
     }
 
 
@@ -114,6 +115,7 @@ const MangaDexChapters = () =>{
         setMangaID(e.data.id);
         setTitle(e.data.attributes.title.en);
         getCover(e.relationships[e.relationships.length - 1].id);
+        getInfo(e.data.id);
         getList();
     }
 
@@ -125,6 +127,12 @@ const MangaDexChapters = () =>{
             setViewMangas(false);
             setViewChapters(true);
         }
+    }
+
+    const getInfo = async (id) => {
+        const api_call = await fetch(`https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga/${id}`);
+        const data = await api_call.json();
+        setCurManga(data);
     }
 
     /*const getChapter = (e,n) =>{
@@ -161,31 +169,40 @@ const MangaDexChapters = () =>{
             </div>
         ) : (viewMangas && 
             <div>
-                <div className="viewManga" styles={{paddingTop: "10vw", height: "100vw"}}>
+                <div className="viewManga">
+                    <header>Search Results:</header>
                     {(mangas.length > 0) && mangas.map((item,id) => showE(item,id))}
                 </div>
             </div>)
         }
         {viewChapters &&
-            <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <div style={{display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "#272B30"}}>
                 <button className="chButton" onClick={() => {setOffset(0); setViewChapters(false); setViewMangas(true);}}>BACK</button>
-                <header>{title}</header>
-                <img src={`https://uploads.mangadex.org/covers/${mangaID}/${cover}`} alt="cover art" width="200"/>
-                <div className="chapters">
-                    {listing.map((item) => 
-                        <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.data.attributes.chapter}`} key={uuidv4()}>
-                            <div className="chapterL">
-                                <h2 className="chapterT" key={uuidv4()}>{item.data.attributes.title}</h2>
-                                <h2 className="chapterN"> {item.data.attributes.chapter}</h2>
-                            </div>
-                        </Link>
-                    )}
-                </div>
-                <div style={{marginBottom: "20px"}}>
-                    <p style={{color: "white", fontSize: "large", textAlign: "center"}}>{listing[0].data.attributes.chapter + " to " + listing[listing.length - 1].data.attributes.chapter}</p>
-                    <button className="arrowButtons" onClick={prev}>{"<"}</button>
-                    <button className="arrowButtons" onClick={next}>{">"}</button>
-                    {/*console.log(offset)*/}
+                <div className="chaptersBox">
+                    <header style={{marginTop: "20px", marginLeft: "40px"}}>{title}</header>
+                    <div className="mangaInfo">
+                        <img className="mangaImg" src={`https://uploads.mangadex.org/covers/${mangaID}/${cover}`} alt="cover art"/>
+                        <div className="mangaDescription">
+                            <br></br>
+                            <p>{curManga !== "" && curManga.data.attributes.description.en}</p>
+                        </div>
+                    </div>
+                    <div className="chapters">
+                        {listing.map((item) => 
+                            <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.data.attributes.chapter}`} key={uuidv4()}>
+                                <div className="chapterL">
+                                    <h2 className="chapterT" key={uuidv4()}>{item.data.attributes.title}</h2>
+                                    <h2 className="chapterN"> {item.data.attributes.chapter}</h2>
+                                </div>
+                            </Link>
+                        )}
+                    </div>
+                    <div style={{marginBottom: "20px", marginLeft: "auto", marginRight: "auto", width: "100px"}}>
+                        <p style={{color: "white", fontSize: "large", textAlign: "center"}}>{listing[0].data.attributes.chapter + " to " + listing[listing.length - 1].data.attributes.chapter}</p>
+                        <button className="arrowButtons" onClick={prev}>{"<"}</button>
+                        <button className="arrowButtons" onClick={next}>{">"}</button>
+                        {/*console.log(offset)*/}
+                    </div>
                 </div>
             </div>
         }

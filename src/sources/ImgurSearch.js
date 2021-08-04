@@ -8,7 +8,7 @@ const ImgurSearch = () => {
           
     return (
         <div className="joinOuterContainerImgur">
-            <form className="joinInnerContainer">
+            <form className="joinInnerContainerImgur">
                 <h1 className="headingImgur">Read from Imgur</h1>
                 <div>
                     <input 

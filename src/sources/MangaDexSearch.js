@@ -69,7 +69,7 @@ const MangaDexSearch = () => {
 
     return (
         <div className = "joinOuterContainerDex">
-            <form className ="joinInnerContainer" onSubmit={onSubmit}>
+            <form className ="joinInnerContainerDex" onSubmit={onSubmit}>
                 <h1 className ="headingDex">Search from MangaDex</h1>
                 <div>
                     <input 
