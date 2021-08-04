@@ -351,13 +351,13 @@ header{
     margin-left: auto;
     position: relative; 
     bottom: 0px;
-    font-weight: lighter;
+    font-weight: 550;
   }
   
   .chapterT{
     position: relative; 
     bottom: 0px;
-    font-weight: lighter;
+    font-weight: 550;
   }
 
   .chButton{
@@ -371,7 +371,7 @@ header{
   }
 
   .chapterM{
-    font-weight: lighter;
+    font-weight: 550;
   }
 
   .mangaInfo{
@@ -475,13 +475,13 @@ header{
     margin-left: auto;
     position: relative; 
     bottom: 0px;
-    font-weight: lighter;
+    font-weight: 550;
   }
   
   .chapterT{
     position: relative; 
     bottom: 0px;
-    font-weight: lighter;
+    font-weight: 550;
   }
 
   .chButton{
@@ -495,7 +495,7 @@ header{
   }
 
   .chapterM{
-    font-weight: lighter;
+    font-weight: 550;
   }
 
   .mangaInfo{
