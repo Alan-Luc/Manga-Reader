@@ -197,10 +197,12 @@ const MangaDexChapters = () =>{
                             </Link>
                         )}
                     </div>
-                    <div style={{marginBottom: "20px", marginLeft: "auto", marginRight: "auto", width: "100px"}}>
+                    <div className="arrowKeys">
                         <p style={{color: "white", fontSize: "large", textAlign: "center"}}>{listing[0].data.attributes.chapter + " to " + listing[listing.length - 1].data.attributes.chapter}</p>
-                        <button className="arrowButtons" onClick={prev}>{"<"}</button>
-                        <button className="arrowButtons" onClick={next}>{">"}</button>
+                        <div className="arrowKey">
+                            <button className="arrowButtons" onClick={prev}>{"<"}</button>
+                            <button className="arrowButtons" onClick={next}>{">"}</button>
+                        </div>
                         {/*console.log(offset)*/}
                     </div>
                 </div>
