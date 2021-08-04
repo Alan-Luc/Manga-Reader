@@ -170,7 +170,7 @@ const MangaDexChapters = () =>{
         ) : (viewMangas && 
             <div>
                 <div className="viewManga">
-                    <header>Search Results:</header>
+                    <header style={{/*borderBottom: "1px solid #cae3c6", marginBottom: "-2px"*/}}>Search Results:</header>
                     {(mangas.length > 0) && mangas.map((item,id) => showE(item,id))}
                 </div>
             </div>)
@@ -188,6 +188,10 @@ const MangaDexChapters = () =>{
                         </div>
                     </div>
                     <div className="chapters">
+                        <div className="chapterChart">
+                            <h2 className="chapterT">Title</h2>
+                            <h2 className="chapterN">Ch #</h2>
+                        </div>
                         {listing.map((item) => 
                             <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.data.attributes.chapter}`} key={uuidv4()}>
                                 <div className="chapterL">
