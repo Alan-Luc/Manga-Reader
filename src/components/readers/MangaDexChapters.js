@@ -65,7 +65,7 @@ const MangaDexChapters = () =>{
             <div>
                 {/*<h1>{console.log(covers[i])}</h1>
                 <img src={`https://uploads.mangadex.org/covers/${mangaID}/${cover}`} alt="cover"/>*/}
-                <h2 className="chapterM" key={uuidv4()} onClick={() => getManga(e)}>{e.data.attributes.title.en}</h2>
+                <h3 className="chapterM" key={uuidv4()} onClick={() => getManga(e)}>{e.data.attributes.title.en}</h3>
             </div> 
         )
         
@@ -201,7 +201,7 @@ const MangaDexChapters = () =>{
                         )}
                     </div>
                     <div className="arrowKeys">
-                        <p style={{color: "white", fontSize: "large", textAlign: "center"}}>{listing[0].data.attributes.chapter + " to " + listing[listing.length - 1].data.attributes.chapter}</p>
+                        <h3 style={{color: "white", textAlign: "center"}}>{listing[0].data.attributes.chapter + " to " + listing[listing.length - 1].data.attributes.chapter}</h3>
                         <div className="arrowKey">
                             <button className="arrowButtons" onClick={prev}>{"<"}</button>
                             <button className="arrowButtons" onClick={next}>{">"}</button>

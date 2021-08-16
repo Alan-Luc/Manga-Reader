@@ -440,14 +440,14 @@ header{
     margin-bottom: 20px; 
     margin-left: auto;
     margin-right: auto;
-    width: 100px;
+    width: 10vh;
   }
 
   .arrowKey{
     margin-bottom: 20px; 
     margin-left: auto;
     margin-right: auto;
-    width: 100px;
+    width: 7vh;
   }
 }
 
@@ -561,7 +561,7 @@ header{
   }
 
   .arrowKey{
-    margin-left: 10px;
+    margin-left: auto;
   }
 
 }
