@@ -183,20 +183,19 @@ const MangaDexChapters = () =>{
                     <div className="mangaInfo">
                         <img className="mangaImg" src={`https://uploads.mangadex.org/covers/${mangaID}/${cover}`} alt="cover art"/>
                         <div className="mangaDescription">
-                            <br></br>
-                            <p>{curManga !== "" && curManga.data.attributes.description.en}</p>
+                            <h3 className="mangD">{curManga !== "" && curManga.data.attributes.description.en}</h3>
                         </div>
                     </div>
                     <div className="chapters">
                         <div className="chapterChart">
-                            <h2 className="chapterT">Title</h2>
-                            <h2 className="chapterN">Ch #</h2>
+                            <h3 className="chapterT">Title</h3>
+                            <h3 className="chapterN">Ch #</h3>
                         </div>
                         {listing.map((item) => 
                             <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.data.attributes.chapter}`} key={uuidv4()}>
                                 <div className="chapterL">
-                                    <h2 className="chapterT" key={uuidv4()}>{item.data.attributes.title}</h2>
-                                    <h2 className="chapterN"> {item.data.attributes.chapter}</h2>
+                                    <h3 className="chapterT" key={uuidv4()}>{item.data.attributes.title}</h3>
+                                    <h3 className="chapterN"> {item.data.attributes.chapter}</h3>
                                 </div>
                             </Link>
                         )}

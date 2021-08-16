@@ -237,6 +237,7 @@ form{
   font-weight: lighter;
   padding-left: 10px;
   padding-right: 10px;
+  
 }
 
 .chapter:hover{
@@ -277,22 +278,25 @@ form{
 .mangaInfo{
   display: flex;
   flex-direction: row;
-  width: 1200px; 
+  width: 140vh; 
   margin-left: auto; 
   margin-right: auto; 
-  margin-top: -40px;
 }
 
 .mangaImg{
-  width: 200px;
+  width: 25vh;
+  margin-right: 5vh;
 }
 
 .mangaDescription{
-  font-size: larger;
+  font-weight: lighter;
+  position: relative;
   color: #cae3c6; 
-  width: 900px; 
-  margin-left: auto; 
-  margin-right: auto;
+  width: 100%;
+}
+
+.mangD{
+  font-weight: lighter;
 }
 
 header{
@@ -311,14 +315,16 @@ header{
   margin-bottom: 20px; 
   margin-left: auto;
   margin-right: auto;
-  width: 100px;
+  width: 50%;
 }
 
 .arrowKey{
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  width: 100px;
+  width: 50%;
 }
 
 @media all and (max-width: 360px){

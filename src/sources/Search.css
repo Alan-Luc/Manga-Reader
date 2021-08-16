@@ -57,14 +57,14 @@ html, body {
 
 .joinInnerContainer {
   width: 20%;
-  height: 50%;
+  height: 55vh;
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 5vh;
 }
 
 .joinInnerContainerDex {
-  width: 40%;
+  width: 50%;
   height: 50%;
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@ html, body {
 }
 
 .joinInnerContainerImgur {
-  width: 40%;
+  width: 50%;
   height: 50%;
   display: flex;
   flex-direction: column;
@@ -104,6 +104,9 @@ html, body {
   font-size: 2.5em;
   padding-bottom: 10px;
   border-bottom: 2px solid #cae3c6;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .headingImgur {
