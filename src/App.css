@@ -192,8 +192,8 @@ form{
   border-radius: 5px;
   display: inline-block;
   border: solid;
-  width: 5vw;
-  height: 1.5vw;
+  width: 100px;
+  height: 30px;
 }
 
 .chButton:hover{
@@ -290,9 +290,8 @@ form{
 
 .mangaDescription{
   font-weight: lighter;
-  position: relative;
   color: #cae3c6; 
-  width: 100%;
+  width: 50vw;
 }
 
 .mangD{
