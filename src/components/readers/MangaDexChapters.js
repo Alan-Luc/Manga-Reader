@@ -65,7 +65,7 @@ const MangaDexChapters = () =>{
             <div>
                 {/*<h1>{console.log(covers[i])}</h1>
                 <img src={`https://uploads.mangadex.org/covers/${mangaID}/${cover}`} alt="cover"/>*/}
-                <h3 className="chapterM" key={uuidv4()} onClick={() => getManga(e)}>{e.data.attributes.title.en}</h3>
+                <h3 className="chapterM" key={uuidv4()} onClick={() => getManga(e)}>{e.attributes.title.en}</h3>
             </div> 
         )
         
@@ -76,7 +76,8 @@ const MangaDexChapters = () =>{
         setTimeout(async () => {
             const api_call = await fetch(mangaURL);
             const data = await api_call.json();
-            if(data.results.length !== 0){
+            //console.log(data)
+            if(data.result === "ok"){
                 /*const array = [];
                 data.results.map(item => array.push([item.data.attributes.title, item.data.id]));
                 console.log(array)
@@ -84,11 +85,11 @@ const MangaDexChapters = () =>{
                 console.log(mangas)
                 setViewMangas(true);*/
                 //setQuery("");
-                setMangas(data.results);
+                setMangas(data.data);
                 setViewMangas(true);
                 setDone(true);
             } 
-            else if(data.results.length === 0) {
+            else if(data.result !== "ok") {
                 setFound(false);
             }
         }, [1000]);
@@ -112,10 +113,10 @@ const MangaDexChapters = () =>{
     }*/
 
     const getManga = (e) => {
-        setMangaID(e.data.id);
-        setTitle(e.data.attributes.title.en);
+        setMangaID(e.id);
+        setTitle(e.attributes.title.en);
         getCover(e.relationships[e.relationships.length - 1].id);
-        getInfo(e.data.id);
+        getInfo(e.id);
         getList();
     }
 
@@ -123,7 +124,8 @@ const MangaDexChapters = () =>{
         if(mangaID !== ""){
             const api_call = await fetch(chaptersURL);
             const data = await api_call.json();
-            setListing(data.results);
+            //console.log(data)
+            setListing(data.data);
             setViewMangas(false);
             setViewChapters(true);
         }
@@ -132,6 +134,7 @@ const MangaDexChapters = () =>{
     const getInfo = async (id) => {
         const api_call = await fetch(`https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/manga/${id}`);
         const data = await api_call.json();
+        //console.log(data)
         setCurManga(data);
     }
 
@@ -192,16 +195,16 @@ const MangaDexChapters = () =>{
                             <h3 className="chapterN">Ch #</h3>
                         </div>
                         {listing.map((item) => 
-                            <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.data.attributes.chapter}`} key={uuidv4()}>
+                            <Link className="chapter" to={`/read/mangadex/${mangaID}/${item.attributes.chapter}`} key={uuidv4()}>
                                 <div className="chapterL">
-                                    <h3 className="chapterT" key={uuidv4()}>{item.data.attributes.title}</h3>
-                                    <h3 className="chapterN"> {item.data.attributes.chapter}</h3>
+                                    <h3 className="chapterT" key={uuidv4()}>{item.attributes.title}</h3>
+                                    <h3 className="chapterN"> {item.attributes.chapter}</h3>
                                 </div>
                             </Link>
                         )}
                     </div>
                     <div className="arrowKeys">
-                        <h3 style={{color: "white", textAlign: "center"}}>{listing[0].data.attributes.chapter + " to " + listing[listing.length - 1].data.attributes.chapter}</h3>
+                        <h3 style={{color: "white", textAlign: "center"}}>{listing[0].attributes.chapter + " to " + listing[listing.length - 1].attributes.chapter}</h3>
                         <div className="arrowKey">
                             <button className="arrowButtons" onClick={prev}>{"<"}</button>
                             <button className="arrowButtons" onClick={next}>{">"}</button>

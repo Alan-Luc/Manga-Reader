@@ -55,9 +55,10 @@ const MangaDexReader = () => {
       const api_call = await fetch(chaptersURL);
       const data = await api_call.json();
       //setList(data.results);
-      if(data.results.length !== 0){
-        setTitle(data.results[0].data.attributes.title);
-        setActiveChapter(data.results[0]);
+      console.log(data)
+      if(data.result === "ok"){
+        setTitle(data.data[0].attributes.title);
+        setActiveChapter(data.data[0]);
         setViewChapter(true);
         /*const hist = history;
         hist.push({name: `${data.results[0].data.attributes.title}`, ch: `${info[1]}`});
@@ -124,16 +125,16 @@ const MangaDexReader = () => {
                           }}>Back
                         </button>*/}
           <div className="pages">
-            {vertical && activeChapter.data.attributes.data.map(item => 
+            {vertical && activeChapter.attributes.data.map(item => 
                                                                   <div>
                                                                     {/*console.log(getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`))*/}
                                                                     <img 
                                                                       className="vMangaPage" 
-                                                                      src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`} 
+                                                                      src={`https://uploads.mangadex.org/data/${activeChapter.attributes.hash}/${item}`} 
                                                                       alt="page"  
                                                                       key={uuidv4()} 
-                                                                      width={(getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`)[1] >
-                                                                       getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`)[0]) ?
+                                                                      width={(getMeta(`https://uploads.mangadex.org/data/${activeChapter.attributes.hash}/${item}`)[1] >
+                                                                       getMeta(`https://uploads.mangadex.org/data/${activeChapter.attributes.hash}/${item}`)[0]) ?
                                                                        size*2 : 
                                                                        size} 
                                                                     />
@@ -145,14 +146,14 @@ const MangaDexReader = () => {
                 <div className="box1" onClick={() => {count > 0 && setCount(prev => prev - 1)}}></div>
                 <img 
                   className="hMangaPage" 
-                  src={`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${activeChapter.data.attributes.data[count]}`} 
+                  src={`https://uploads.mangadex.org/data/${activeChapter.attributes.hash}/${activeChapter.attributes.data[count]}`} 
                   alt="manga page" 
-                  width={(getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${activeChapter.data.attributes.data[count]}`)[1] >
-                          getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${activeChapter.data.attributes.data[count]}`)[0]) ? 
+                  width={(getMeta(`https://uploads.mangadex.org/data/${activeChapter.attributes.hash}/${activeChapter.attributes.data[count]}`)[1] >
+                          getMeta(`https://uploads.mangadex.org/data/${activeChapter.attributes.hash}/${activeChapter.attributes.data[count]}`)[0]) ? 
                           size*2 : 
                           size }
                 />
-                <div className="box2" onClick={() => {count < (activeChapter.data.attributes.data.length - 1) && setCount(prev => prev + 1)}}></div>
+                <div className="box2" onClick={() => {count < (activeChapter.attributes.data.length - 1) && setCount(prev => prev + 1)}}></div>
               </div>
             </div>
           }
