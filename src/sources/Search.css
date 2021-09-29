@@ -226,8 +226,7 @@ html, body {
 
 @media (min-width: 320px) and (max-width: 480px) {
   .joinOuterContainer {
-    height: 100%;
-    background-size: 90vw 200vw;
+    height: 100vh;
   }
 
   .joinOuterContainerImgur {
