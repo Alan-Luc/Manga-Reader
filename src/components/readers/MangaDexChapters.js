@@ -48,6 +48,7 @@ const MangaDexChapters = () =>{
     const getCover = async (e) =>{
         const api_call = await fetch(`https://quiet-temple-13952.herokuapp.com/https://api.mangadex.org/cover/${e}`);
         const data = await api_call.json();
+        //console.log(data)
         setCover(data.data.attributes.fileName);
     }
 
@@ -115,7 +116,12 @@ const MangaDexChapters = () =>{
     const getManga = (e) => {
         setMangaID(e.id);
         setTitle(e.attributes.title.en);
-        getCover(e.relationships[e.relationships.length - 1].id);
+        console.log(e)
+        for(let i=0;i<e.relationships.length; i++){
+            if(e.relationships[i].type === "cover_art"){
+                getCover(e.relationships[i].id);
+            }
+        }
         getInfo(e.id);
         getList();
     }

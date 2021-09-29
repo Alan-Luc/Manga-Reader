@@ -115,7 +115,7 @@ const MangaDexReader = () => {
           </div>
           {!vertical &&
           <div className="pageSelect">
-            <SelectPage pages={activeChapter.data.attributes.data} counter={count} newCount={setCount} vert={vertical}/>
+            <SelectPage pages={activeChapter.attributes.data} counter={count} newCount={setCount} vert={vertical}/>
           </div>}
           {/*<button 
             onClick={() => {  
