@@ -22,7 +22,7 @@ const Landing = () => {
                             </div> :
                             <button className="button" onClick={()=> setStarted(true)}>Start Reading</button>}
                     </div>
-                    <img className="landingImg" src="https://bit.ly/3lukfG0" alt="manga pic"/>
+                    <img className="landingImg" src="/images/manga.jpg" alt="manga pic"/>
                 </div>
             </div>
             {/*
