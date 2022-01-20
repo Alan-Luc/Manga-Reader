@@ -125,7 +125,7 @@ const MangaDexReader = () => {
                           }}>Back
                         </button>*/}
           <div className="pages">
-            {vertical && activeChapter.attributes.data.map(item => 
+            {vertical && activeChapter.attributes.data?.map(item => 
                                                                   <div>
                                                                     {/*console.log(getMeta(`https://uploads.mangadex.org/data/${activeChapter.data.attributes.hash}/${item}`))*/}
                                                                     <img 
