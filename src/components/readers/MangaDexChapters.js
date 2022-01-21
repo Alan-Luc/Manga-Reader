@@ -220,7 +220,7 @@ const MangaDexChapters = () =>{
                 </div>
             </div>
         }
-            <h1 style={{color: 'white', textAlign: 'center', fontSize: "50px"}}><strong>As of January 11th 2022, 
+            <h1 style={{color: '#DFBF84', textAlign: 'center', fontSize: "35px", fontFamily: "Segoe UI Light"}}><strong>As of January 11th 2022, 
             MangaDex API has been updated and no longer provides images.</strong>
             </h1>
         </div>
